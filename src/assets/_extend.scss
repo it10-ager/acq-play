@@ -1,0 +1,51 @@
+@import './vars';
+
+%mainWrapper{
+	padding: $wrapperPadding;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+%titleFont {
+	margin: 15% 0 40px;
+	font-size: 36px;
+	color: #339860;
+	text-shadow:
+		-0 -2px 1px #FFFFFF,
+		0 -2px 1px #FFFFFF,
+		-0 2px 1px #FFFFFF,
+		0 2px 1px #FFFFFF,
+		-2px -0 1px #FFFFFF,
+		2px -0 1px #FFFFFF,
+		-2px 0 1px #FFFFFF,
+		2px 0 1px #FFFFFF,
+		-1px -2px 1px #FFFFFF,
+		1px -2px 1px #FFFFFF,
+		-1px 2px 1px #FFFFFF,
+		1px 2px 1px #FFFFFF,
+		-2px -1px 1px #FFFFFF,
+		2px -1px 1px #FFFFFF,
+		-2px 1px 1px #FFFFFF,
+		2px 1px 1px #FFFFFF,
+		-2px -2px 1px #FFFFFF,
+		2px -2px 1px #FFFFFF,
+		-2px 2px 1px #FFFFFF,
+		2px 2px 1px #FFFFFF,
+		-2px -2px 1px #FFFFFF,
+		2px -2px 1px #FFFFFF,
+		-2px 2px 1px #FFFFFF,
+		2px 2px 1px #FFFFFF;
+}
+
+%backgroundImg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url(../assets/img/background/Fon-3.png);
+	background-size: cover;
+	z-index: -1;
+}

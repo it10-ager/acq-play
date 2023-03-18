@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+	<div id="app">
+		<!-- <nav>
+			<router-link to="/">Home</router-link> |
+			<router-link to="/about">About</router-link>
+		</nav> -->
+		<router-view />
+	</div>
 </template>
 
+<script>
+	
+</script>
+
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+	@import './assets/vars';
+	@import './assets/extend';
 
-nav {
-  padding: 30px;
+	@font-face {
+		font-family: 'Myriad Pro';
+		src: url('./assets/fonts/MyriadPro-Regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+	body {font-family: 'Myriad Pro', sans-serif!important;}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+	#app {
+		margin: 0 auto!important;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		max-width: 425px;
+	}
 </style>
