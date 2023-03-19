@@ -3,8 +3,6 @@
 		<!--bg img-->
 		<div class="bg-image"></div>
 
-		<div class="text-center title">Знакомься по новому!</div>
-
 		<!--Slider-->
 		<SliderFirst />
 
@@ -26,7 +24,7 @@
 
 		<!---Email input--->
 		<input class="input-email" type="email" :placeholder="emailPlaceholder" v-model="email"
-		@keydown.enter="checkEmailValidity()" :class="{ 'is-invalid': emailInvalid }" />
+		:class="{ 'is-invalid': emailInvalid }" />
 
 		<!--User checkbox-->
 		<div class="user-choose d-flex justify-content-between align-items-center px-2">
@@ -45,7 +43,7 @@
 		<!--Main block to next page-->
 		<b-row class="join d-flex justify-content-center my-2">
 			<b-col>
-				<div class="next-block" >
+				<div class="next-block" @click="checkEmailValidity()">
 					<span class="w-100 text-center">Присоединиться</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
 				</div>
@@ -75,6 +73,7 @@
 				isActive: "register",
 				email: '',
 				emailInvalid: false,
+				emailValid: false,
 				emailPlaceholder: 'Введите e-mail для регистрации',
 			}
 		},
@@ -92,7 +91,7 @@
 
 			checkEmailValidity() {
 				var emailExam = /^\S+@\S+\.\S+$/;
-				
+
 				if (!this.email.trim()) {
 					this.emailInvalid = true;
 					this.emailValid = false;
@@ -100,13 +99,20 @@
 					this.emailPlaceholder = 'Поле e-mail пустое!';
 				} else if(!emailExam.test(this.email)) {
 					this.emailInvalid = true;
+					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'E-mail содержит ошибку';
 				} else {
 					this.emailInvalid = false;
+					this.emailValid = true;
 					this.email = '';
 					this.emailPlaceholder = 'Введите e-mail для регистрации';
 				}
+
+				/* go to next page if all fields full and right*/
+				if(this.emailValid){
+       				/* this.$router.push('/data-registration'); */
+    			}
 			},
 
 			passReset(){
@@ -182,10 +188,12 @@
 
 		.social{
 			margin-bottom: 30px;
-			div{
-				width: 60px;
-				&:first-of-type{margin-right: 20px;}
-				>img{width: inherit;}
+			a{
+				&:first-of-type{margin-right: 15px;}
+				div{
+					width: 60px;
+					>img{width: inherit;}
+				}
 			}
 		}
 

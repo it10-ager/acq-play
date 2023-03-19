@@ -5,11 +5,12 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	justify-content: center;
+	height: 100%;
 }
 
 %titleFont {
-	margin: 15% 0 40px;
+	margin: 10% 0 40px;
 	font-size: 36px;
 	color: #339860;
 	text-shadow:

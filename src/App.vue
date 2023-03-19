@@ -24,6 +24,10 @@
 		font-style: normal;
 	}
 
+	html, body{
+		height: 100%;
+	}
+
 	body {font-family: 'Myriad Pro', sans-serif!important;}
 
 	#app {

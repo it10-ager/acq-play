@@ -3,8 +3,6 @@
 		<!--bg img-->
 		<div class="bg-image"></div>
 
-		<div class="text-center title">Знакомься по новому!</div>
-
 		<!--Slider-->
 		<SliderFirst />
 
@@ -107,9 +105,6 @@
 					this.emailValid = true;
 					this.email = '';
 					this.emailPlaceholder = 'Введите e-mail / логин';
-					
-					/* go to next page if all fields full */
-					/* this.$router.push('/registration'); */
 				}
 
 				if (!this.pass.trim()) {
@@ -127,10 +122,12 @@
 					this.passValid = true;
 					this.pass = '';
 					this.passPlaceholder = 'Введите свой пароль';
-					
-					/* go to next page if all fields full */
-					/* this.$router.push('/registration'); */
 				}
+				
+				/* go to next page if all fields full and right*/
+				if(this.emailValid && this.passValid){
+       				/* this.$router.push('/registration'); */
+    			}
 			},
 
 			passReset() {

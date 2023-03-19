@@ -2,9 +2,7 @@
 	<div class="search-love">
 		<!--bg img-->
 		<div class="bg-image"></div>
-
-		<div class="text-center title">Знакомься по новому!</div>
-
+		
 		<!--Slider-->
 		<SliderFirst />
 
