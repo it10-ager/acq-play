@@ -6,13 +6,16 @@
 		<!--Title for block-->
 		<div class="text-center title">Найди любовь играя!</div>
 
+		<!--Slider-->
 		<SliderFirst />
 
+		<!--Button of Registration or Authorization-->
 		<div class="registration">
 			<span :class="{ active: isActive === 'register' }" @click="setActive('register')">Регистрация</span>
 			<span :class="{ active: isActive === 'auth' }" @click="setActive('auth')">Авторизация</span>
 		</div>
 
+		<!--Social links-->
 		<div class="social d-flex justify-content-center">
 			<a href="">
 				<div><img src="../assets/img/elements/vk_icon.png" alt="vk"></div>
@@ -22,9 +25,12 @@
 			</a>
 		</div>
 
-		<input class="input-email" type="email" placeholder="Введите e-mail для регистрации" v-model="email" @input="checkEmailValidity()" :class="{ 'is-invalid': emailInvalid }"/>
+		<!---Email input--->
+		<input class="input-email" type="email" :placeholder="emailPlaceholder" v-model="email"
+		@keydown.enter="checkEmailValidity()" :class="{ 'is-invalid': emailInvalid }" />
 
-		<div class="user-choose d-flex justify-content-between px-2">
+		<!--User checkbox-->
+		<div class="user-choose d-flex justify-content-between align-items-center px-2">
 			<div class="remember">
 				<b-form-checkbox id="checkbox-1" v-model="status" name="checkbox-1" value="accepted" unchecked-value="not_accepted">
 					<span>&nbsp;Запомнить меня</span>
@@ -46,6 +52,13 @@
 				</div>
 			</b-col>
 		</b-row>
+
+		<!--Reset password-->
+		<b-row class="my-2">
+			<b-col class="text-center">
+				<span>Забыли свой пароль?</span>
+			</b-col>
+		</b-row>
 	</div>
 </template>
 
@@ -59,6 +72,9 @@
 		data() {
 			return {
 				isActive: "register",
+				email: '',
+				emailInvalid: false,
+				emailPlaceholder: 'Введите e-mail для регистрации',
 			}
 		},
 		
@@ -67,7 +83,18 @@
 			setActive(action) {
 				this.isActive = action;
 			},
-			
+			checkEmailValidity() {
+				var emailExam = /^\S+@\S+\.\S+$/;
+				if (!emailExam.test(this.email)) {
+					this.emailInvalid = true;
+					this.email = '';
+					this.emailPlaceholder = 'E-mail содержит ошибку';
+				} else {
+					this.emailInvalid = false;
+					this.email = '';
+					this.emailPlaceholder = 'Введите e-mail для регистрации';
+				}
+			},
 		},
 	};
 </script>
@@ -78,6 +105,7 @@
 
 	.search-love {
 		@extend %mainWrapper;
+		font-size: 16px;
 
 		.bg-image {@extend %backgroundImg;}
 		.title {@extend %titleFont;}
@@ -134,15 +162,40 @@
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: center;
 			margin-bottom: 30px;
-  		}
+
+			&.is-invalid {
+				&::placeholder {
+					font-weight: bold;
+					color: rgb(255, 174, 0);
+				}
+			}
+			&::placeholder {color: #999;}
+		}
 
 		.user-choose{
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 			.lang{
 				.change-lang{
 					color: $bgMain;
 					cursor: pointer;
 				}
+			}
+		}
+
+		.join {
+			.next-block{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				background: $bgMain;
+				color: $fontColor;
+				border-radius: 50px;
+				padding: 15px 30px;
+				cursor: pointer;
+				transition: background 0.2s;
+
+				>img {width: 8px;}
+				&:hover {background: #339860;}
 			}
 		}
 	}
