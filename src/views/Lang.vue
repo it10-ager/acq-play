@@ -6,7 +6,8 @@
 		<!--Blocks for choosing language-->
 		<b-row class="lang-content d-flex justify-content-center flex-column mt-4">
 			<b-col class="col-width my-2" v-for="(lang, index) in languages" :key="index">
-				<div :class="['lang-block', lang.active ? 'active' : '']" @click="toggleLanguage(index)">{{ lang.text }}
+				<div :class="['lang-block', lang.active ? 'active' : '']" @click="toggleLanguage(index)">
+					{{ lang.text }}
 				</div>
 			</b-col>
 		</b-row>
