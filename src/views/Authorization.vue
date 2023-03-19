@@ -14,19 +14,12 @@
 			<span :class="{ active: isActive === 'auth' }" @click="setAuth('auth')">Авторизация</span>
 		</div>
 
-		<!--Social links-->
-		<div class="social d-flex justify-content-center">
-			<a href="">
-				<div><img src="../assets/img/elements/vk_icon.png" alt="vk"></div>
-			</a>
-			<a href="">
-				<div><img src="../assets/img/elements/logo_google_plus_icon.png" alt="vk"></div>
-			</a>
-		</div>
-
 		<!---Email input--->
 		<input class="input-email" type="email" :placeholder="emailPlaceholder" v-model="email"
-		@keydown.enter="checkEmailValidity()" :class="{ 'is-invalid': emailInvalid }" />
+		:class="{ 'is-invalid': emailInvalid, 'is-valid': emailValid}"  />
+		<!---Password input--->
+		<input class="input-pass" type="password" :placeholder="passPlaceholder" v-model="pass"
+		:class="{ 'is-invalid': passInvalid, 'is-valid': passValid}"  />
 
 		<!--User checkbox-->
 		<div class="user-choose d-flex justify-content-between align-items-center px-2">
@@ -45,8 +38,8 @@
 		<!--Main block to next page-->
 		<b-row class="join d-flex justify-content-center my-2">
 			<b-col>
-				<div class="next-block" >
-					<span class="w-100 text-center">Присоединиться</span>
+				<div class="next-block" @click="checkFormValidity()">
+					<span class="w-100 text-center">Войти</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
 				</div>
 			</b-col>
@@ -64,7 +57,7 @@
 <script>
 	import SliderFirst from '../components/SliderFirst.vue'
 	export default {
-		name: 'Registration',
+		name: 'Authorization',
 
 		components: {
 			SliderFirst,
@@ -72,10 +65,15 @@
 
 		data() {
 			return {
-				isActive: "register",
+				isActive: "auth",
 				email: '',
+				pass: '',
 				emailInvalid: false,
-				emailPlaceholder: 'Введите e-mail для регистрации',
+				passInvalid: false,
+				emailValid: false,
+				passValid: false,
+				emailPlaceholder: 'Введите e-mail / логин',
+				passPlaceholder: 'Введите свой пароль',
 			}
 		},
 
@@ -90,26 +88,52 @@
 				this.$router.push('/authorization');
 			},
 
-			checkEmailValidity() {
+			checkFormValidity() {
 				var emailExam = /^\S+@\S+\.\S+$/;
-				
+				var passExam = 5;	/*for test*/
+
 				if (!this.email.trim()) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'Поле e-mail пустое!';
-				} else if(!emailExam.test(this.email)) {
+				} else if (!emailExam.test(this.email)) {
 					this.emailInvalid = true;
+					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'E-mail содержит ошибку';
 				} else {
 					this.emailInvalid = false;
+					this.emailValid = true;
 					this.email = '';
-					this.emailPlaceholder = 'Введите e-mail для регистрации';
+					this.emailPlaceholder = 'Введите e-mail / логин';
+					
+					/* go to next page if all fields full */
+					/* this.$router.push('/registration'); */
+				}
+
+				if (!this.pass.trim()) {
+					this.passInvalid = true;
+					this.passValid = false;
+					this.pass = '';
+					this.passPlaceholder = 'Поле пароль пустое!';
+				} else if (this.pass.length < passExam) { /*for test*/
+					this.passInvalid = true;
+					this.passValid = false;
+					this.pass = '';
+					this.passPlaceholder = 'Неверный пароль';
+				} else {
+					this.passInvalid = false;
+					this.passValid = true;
+					this.pass = '';
+					this.passPlaceholder = 'Введите свой пароль';
+					
+					/* go to next page if all fields full */
+					/* this.$router.push('/registration'); */
 				}
 			},
 
-			passReset(){
+			passReset() {
 				this.$router.push('/passreset');
 			},
 		},
@@ -130,7 +154,7 @@
 		.registration {
 			display: flex;
 			width: 100%;
-			margin: 0 auto 30px;
+			margin: 0 auto 60px;
 			justify-content: space-between;
 			align-items: center;
 			border-radius: 50px;
@@ -189,14 +213,16 @@
 			}
 		}
 
-		.input-email {
+		.input-email, .input-pass {
 			border: 0;
 			outline: none;
 			padding: 10px;
 			border-radius: 50px;
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: center;
-			margin-bottom: 30px;
+			margin-bottom: 25px;
+
+			&.input-email {margin-bottom: 15px;}
 
 			&.is-invalid {
 				&::placeholder {
