@@ -1,20 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Screen0 from '../views/Screen0.vue';
-import Screen1 from '../views/Screen1.vue';
+import Lang from '../views/Lang.vue';
+import Registration from '../views/Registration.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
 	{
 		path: '/',
-		name: 'Screen0',
-		component: Screen0,
+		name: 'Lang',
+		component: Lang,
 	},
 	{
-		path: '/screen1',
-		name: 'Screen1',
-		component: Screen1,
+		path: '/registration',
+		name: 'Registration',
+		component: Registration,
 	},
 ];
 

@@ -17,7 +17,7 @@
 		<!--Main block to next page-->
 		<b-row class="lang-content d-flex justify-content-center my-2" v-if="hasActiveLanguage">
 			<b-col>
-				<div class="next-block" @click="goToScreen1">
+				<div class="next-block" @click="goToRegistration">
 					<span class="w-100 text-center">Далее</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
 				</div>
@@ -28,7 +28,7 @@
   
 <script>
 	export default {
-		name: 'Screen0',
+		name: 'Lang',
 		data() {
 			return {
 				/* languages */
@@ -47,7 +47,7 @@
 		methods: {
 			toggleLanguage(index) { this.languages[index].active = !this.languages[index].active; },
 			/* go to next page */
-			goToScreen1() {this.$router.push('/screen1');},
+			goToRegistration() {this.$router.push('/registration');},
 		}
 	};
 </script>
@@ -85,7 +85,7 @@
 				border-radius: 50px;
 				padding: 15px 30px;
 				cursor: pointer;
-				transition: background-color 0.2s;
+				transition: background 0.2s;
 			}
 
 			.next-block {
