@@ -1,8 +1,5 @@
 <template>
 	<div class="search-love">
-		<!--bg img-->
-		<div class="bg-image"></div>
-
 		<!--Slider-->
 		<SliderFirst />
 
@@ -129,8 +126,6 @@
 	.search-love {
 		@extend %mainWrapper;
 		font-size: 16px;
-
-		.bg-image {@extend %backgroundImg;}
 		.title {@extend %titleFont;}
 
 		.registration {

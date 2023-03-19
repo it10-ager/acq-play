@@ -1,8 +1,5 @@
 <template>
 	<div class="language-select">
-		<!--bg img-->
-		<div class="bg-image"></div>
-		
 		<!--Title for page-->
 		<div class="text-center title">Выберите язык</div>
 		
@@ -62,8 +59,6 @@
 		display: flex;
 		flex-direction: column;
 		height: 100vh;
-
-		.bg-image {@extend %backgroundImg;}
 		.title {@extend %titleFont;}
 
 		.lang-content {

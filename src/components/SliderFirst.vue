@@ -130,7 +130,7 @@
 				.img-slide{
 					display: flex;
 					justify-content: center;
-					>img{height: 210px;}
+					>img{height: 190px;}
 				}
 			}
 		}

@@ -1,5 +1,7 @@
 <template>
 	<div id="app">
+		<!--bg img-->
+		<div class="bg-image"></div>
 		<!-- <nav>
 			<router-link to="/">Home</router-link> |
 			<router-link to="/about">About</router-link>
@@ -25,7 +27,7 @@
 	}
 
 	html, body{
-		height: 100%;
+		
 	}
 
 	body {font-family: 'Myriad Pro', sans-serif!important;}
@@ -35,5 +37,17 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		max-width: 425px;
+		position: relative;
+
+		.bg-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: url(./assets/img/background/Fon-3.png);
+			background-size: cover;
+			z-index: -1;
+		}
 	}
 </style>
