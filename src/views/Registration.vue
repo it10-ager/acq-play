@@ -50,7 +50,7 @@
 		<!--Reset password-->
 		<b-row class="my-2">
 			<b-col class="text-center">
-				<span @click="passReset">Забыли свой пароль?</span>
+				<span @click="passReset" style="cursor: pointer;">Забыли свой пароль?</span>
 			</b-col>
 		</b-row>
 	</div>
@@ -108,7 +108,7 @@
 
 				/* go to next page if all fields full and right*/
 				if(this.emailValid){
-       				/* this.$router.push('/data-registration'); */
+       				this.$router.push('/new-data-user');
     			}
 			},
 
@@ -136,7 +136,7 @@
 			align-items: center;
 			border-radius: 50px;
 			background: #fff;
-			color: #b6b6b6;
+			color: $placeholderColor;
 			font-size: 16px;
 			-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
@@ -203,11 +203,10 @@
 
 			&.is-invalid {
 				&::placeholder {
-					font-weight: bold;
-					color: rgb(255, 174, 0);
+					color: $errorColor;
 				}
 			}
-			&::placeholder {color: #999;}
+			&::placeholder {color: $placeholderColor;}
 		}
 
 		.user-choose{

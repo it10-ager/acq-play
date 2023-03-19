@@ -33,7 +33,7 @@
 		<!--Reset password-->
 		<b-row class="my-2">
 			<b-col class="text-center">
-				<span>Забыли свой пароль?</span>
+				<span @click="passReset" style="cursor: pointer;">Забыли свой пароль?</span>
 			</b-col>
 		</b-row>
 	</div>
@@ -79,6 +79,10 @@
 					this.emailPlaceholder.style.color = 'green';
 				}
 			},
+
+			passReset() {
+				this.$router.push('/passreset');
+			},
 		},
 	};
 </script>
@@ -103,14 +107,12 @@
 
 			&.is-invalid {
 				&::placeholder {
-					font-weight: bold;
 					color: rgb(255, 174, 0);
 				}
 			}
 
 			&.is-valid {
 				&::placeholder {
-					font-weight: bold;
 					color: $bgMain;
 				}
 			}

@@ -27,17 +27,18 @@
 	}
 
 	html, body{
-		
+		height: 100%!important;
 	}
 
 	body {font-family: 'Myriad Pro', sans-serif!important;}
 
 	#app {
-		margin: 0 auto!important;
+		margin: auto!important;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		max-width: 425px;
 		position: relative;
+		
 
 		.bg-image {
 			position: absolute;

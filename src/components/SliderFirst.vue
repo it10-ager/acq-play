@@ -132,6 +132,12 @@
 					justify-content: center;
 					>img{height: 190px;}
 				}
+
+				&:first-of-type{
+					.img-slide{
+						>img{height: 178px;}
+					}
+				}
 			}
 		}
 
@@ -145,6 +151,7 @@
 				background-color: #fff;
 				border-radius: 50%;
 				margin-bottom: 10px;
+				cursor: pointer;
 
 				&.active{background-color: $bgMain;}
 			}

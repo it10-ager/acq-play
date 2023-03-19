@@ -4,6 +4,7 @@ import Lang from '../views/Lang.vue';
 import Registration from '../views/Registration.vue';
 import Authorization from '../views/Authorization.vue';
 import PassReset from '../views/PassReset.vue';
+import NewDataUser from '../views/NewDataUser.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
 		path: '/passreset',
 		name: 'PassReset',
 		component: PassReset,
+	},
+	{
+		path: '/new-data-user',
+		name: 'NewDataUser',
+		component: NewDataUser,
 	},
 ];
 

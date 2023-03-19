@@ -43,7 +43,7 @@
 		<!--Reset password-->
 		<b-row class="my-2">
 			<b-col class="text-center">
-				<span @click="passReset">Забыли свой пароль?</span>
+				<span @click="passReset" style="cursor: pointer;">Забыли свой пароль?</span>
 			</b-col>
 		</b-row>
 	</div>
@@ -218,11 +218,10 @@
 
 			&.is-invalid {
 				&::placeholder {
-					font-weight: bold;
-					color: rgb(255, 174, 0);
+					color: $errorColor;
 				}
 			}
-			&::placeholder {color: #999;}
+			&::placeholder {color: $placeholderColor;}
 		}
 
 		.user-choose{
