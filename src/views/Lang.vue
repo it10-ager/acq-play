@@ -58,7 +58,7 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		height: 100vh;
+		min-height: 100vh;
 		.title {@extend %titleFont;}
 
 		.lang-content {

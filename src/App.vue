@@ -38,6 +38,7 @@
 		-moz-osx-font-smoothing: grayscale;
 		max-width: 425px;
 		position: relative;
+		min-height: 100%;
 		
 
 		.bg-image {
