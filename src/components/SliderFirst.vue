@@ -9,6 +9,7 @@
 					<img src="../assets/img/presentpage/Сноубордист2-(Интересы).gif" alt="boy">
 				</div>
 			</div>
+			
 			<!------2------>
 			<div class="slide" :class="{ active: activeBlock === 2 }">
 				<div class="text-center title">Прокачай психологию!</div>
@@ -17,6 +18,7 @@
 					<img src="../assets/img/presentpage/Парень-(Психология).gif" alt="boy">
 				</div>
 			</div>
+
 			<!------3------>
 			<div class="slide" :class="{ active: activeBlock === 3 }">
 				<div class="text-center title">Знакомься по новому!</div>
@@ -25,6 +27,7 @@
 					<img src="../assets/img/presentpage/Приветливый-(границы).gif" alt="boy">
 				</div>
 			</div>
+
 			<!------4------>
 			<div class="slide" :class="{ active: activeBlock === 4 }">
 				<div class="text-center title">По всему миру!</div>
@@ -33,6 +36,7 @@
 					<img src="../assets/img/presentpage/Парень-(Иностранец).gif" alt="boy">
 				</div>
 			</div>
+
 			<!------5------>
 			<div class="slide" :class="{ active: activeBlock === 5 }">
 				<div class="text-center title">Крепкие отношения!</div>
@@ -40,6 +44,7 @@
 					<img src="../assets/img/presentpage/Пара-(Отношения).gif" alt="together">
 				</div>
 			</div>
+
 			<!------6------>
 			<div class="slide" :class="{ active: activeBlock === 6 }">
 				
@@ -49,6 +54,7 @@
 					<img src="../assets/img/presentpage/Парень-(Обсуждения).gif" alt="boy">
 				</div>
 			</div>
+			
 			<!------7------>
 			<div class="slide" :class="{ active: activeBlock === 7 }">
 				
@@ -58,6 +64,7 @@
 					<img src="../assets/img/presentpage/Курильщик-(пошлости).gif" alt="boy">
 				</div>
 			</div>
+
 			<!------8------>
 			<div class="slide" :class="{ active: activeBlock === 8 }">
 				
@@ -67,6 +74,7 @@
 					<img src="../assets/img/presentpage/Парень-(Скука).gif" alt="boy">
 				</div>
 			</div>
+
 			<!------9------>
 			<div class="slide" :class="{ active: activeBlock === 9 }">
 				<div class="img-slide">
@@ -74,6 +82,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="dot-btn">
 			<span class="dot" :class="{ active: activeBlock === 1 }" @click="activeDot(1)"></span>
 			<span class="dot" :class="{ active: activeBlock === 2 }" @click="activeDot(2)"></span>

@@ -6,7 +6,8 @@ import Authorization from '../views/Authorization.vue';
 import PassReset from '../views/PassReset.vue';
 import NewDataUser from '../views/NewDataUser.vue';
 import ChooseImages from '../views/ChooseImages.vue';
-import DownloadUserPhoto from '@/views/DownloadUserPhoto.vue';
+import DownloadUserPhoto from '../views/DownloadUserPhoto.vue';
+import GuessImages from '../views/GuessImages.vue';
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
 		path: '/download-user-photo',
 		name: 'DownloadUserPhoto',
 		component: DownloadUserPhoto,
+	},
+	{
+		path: '/guess-images',
+		name: 'GuessImages',
+		component: GuessImages,
 	},
 ];
 
