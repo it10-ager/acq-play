@@ -6,6 +6,7 @@ import Authorization from '../views/Authorization.vue';
 import PassReset from '../views/PassReset.vue';
 import NewDataUser from '../views/NewDataUser.vue';
 import ChooseImages from '../views/ChooseImages.vue';
+import DownloadUserPhoto from '@/views/DownloadUserPhoto.vue';
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
 		path: '/choose-images',
 		name: 'ChooseImages',
 		component: ChooseImages,
+	},
+	{
+		path: '/download-user-photo',
+		name: 'DownloadUserPhoto',
+		component: DownloadUserPhoto,
 	},
 ];
 

@@ -121,7 +121,7 @@
 
 		methods: {
 			toggleBlock(block) {block.isActive = !block.isActive;},
-			// goToNextProfilePage(){this.$router.push('/profile');}
+			goToNextProfilePage(){this.$router.push('/download-user-photo');}
 		},
 	};
 </script>
