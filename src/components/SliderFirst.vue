@@ -100,14 +100,10 @@
 <script>
 	export default {
 		data() {
-			return {
-				activeBlock: 1
-			}
+			return {activeBlock: 1}
 		},
 		methods: {
-			activeDot(tab) {
-				this.activeBlock = tab;
-			}
+			activeDot(tab) {this.activeBlock = tab;}
 		}
 	}
 </script>

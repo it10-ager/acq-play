@@ -293,19 +293,14 @@
 
 					>span{
 						cursor: pointer;
-						
 						&.main:hover{color: $bgMain;}
-
 						&.delete{
 							&.disabled {
  								color: gray;
   								pointer-events: none;
 							}
 						}
-						&.delete:hover{
-							color: $errorColor;
-							
-						}
+						&.delete:hover{color: $errorColor;}
 					}
 				}
 			}

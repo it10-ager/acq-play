@@ -43,7 +43,6 @@
 	import SliderFirst from '../components/SliderFirst.vue'
 	export default {
 		name: 'PassReset',
-
 		components: {
 			SliderFirst,
 		},
@@ -106,15 +105,11 @@
 			margin-bottom: 140px;
 
 			&.is-invalid {
-				&::placeholder {
-					color: rgb(255, 174, 0);
-				}
+				&::placeholder {color: rgb(255, 174, 0);}
 			}
 
 			&.is-valid {
-				&::placeholder {
-					color: $bgMain;
-				}
+				&::placeholder {color: $bgMain;}
 			}
 			&::placeholder {color: #999;}
 		}

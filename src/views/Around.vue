@@ -133,10 +133,7 @@
 				margin-bottom: 40px;
 				.another-photos:last-of-type{margin-right: 0px;}
 				.another-photos{
-					>div{
-						width: 100%;
-					}
-
+					>div{width: 100%;}
 					&:nth-child(1){
 						>div:nth-child(1){
 							position: relative;
@@ -182,18 +179,14 @@
 									>img{
 										margin-bottom: 5px;
 										width: 50px;
-										@media screen and (min-width: 410px){
-											width: 60px;
-										}
+										@media screen and (min-width: 410px){width: 60px;}
 									}
 								}
 
 								>span{
 									margin: 0;
 									font-size: 12px;
-									@media screen and (min-width: 410px){
-										font-size: 16px;
-									}
+									@media screen and (min-width: 410px){font-size: 16px;}
 								}
 							}
 						}

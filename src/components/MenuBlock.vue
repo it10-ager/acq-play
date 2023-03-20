@@ -1,5 +1,6 @@
 <template>
 	<div class="menu-block">
+		<!----Btn to page around---->
 		<div class="menu-btn" @click="goToAroundPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/around.png" alt="around">
@@ -7,6 +8,7 @@
 			<div class="btn-title">Вокруг</div>
 		</div>
 
+		<!----Btn to page game---->
 		<div class="menu-btn" @click="goToGamePage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/game.png" alt="game">
@@ -14,6 +16,7 @@
 			<div class="btn-title">Игра</div>
 		</div>
 
+		<!----Btn to page dialog---->
 		<div class="menu-btn" @click="goToDialogPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/dialog.png" alt="dialog">
@@ -21,6 +24,7 @@
 			<div class="btn-title">Диалоги</div>
 		</div>
 
+		<!----Btn to page story---->
 		<div class="menu-btn" @click="goToStoryPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/story.png" alt="story">
@@ -28,6 +32,7 @@
 			<div class="btn-title">История</div>
 		</div>
 
+		<!----Btn to page settings---->
 		<div class="menu-btn" @click="goToSettingsPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/settings.png" alt="settings">
@@ -39,12 +44,6 @@
 
 <script>
 	export default {
-		data() {
-			return {
-				
-			}
-		},
-
 		methods: {
 			goToAroundPage(){this.$router.push('/around');},
 			goToGamePage(){this.$router.push('/game');},
@@ -72,7 +71,6 @@
 		max-width: inherit;
 		padding: 10px 10px 5px;
 		
-
 		.menu-btn{
 			display: flex;
 			flex-direction: column;

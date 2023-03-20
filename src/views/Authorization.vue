@@ -123,7 +123,7 @@
 				
 				/* go to next page if all fields full and right*/
 				if(this.emailValid && this.passValid){
-       				/* this.$router.push('/profile'); */
+       				/* this.$router.push('/guess-images'); */
     			}
 			},
 
@@ -142,7 +142,6 @@
 		@extend %mainWrapper;
 		font-size: 16px;
 		.title {@extend %titleFont;}
-
 		.registration {
 			display: flex;
 			width: 100%;
