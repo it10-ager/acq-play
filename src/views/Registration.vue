@@ -220,20 +220,7 @@
 		}
 
 		.join {
-			.next-block{
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				background: $bgMain;
-				color: $fontColor;
-				border-radius: 50px;
-				padding: 15px 30px;
-				cursor: pointer;
-				transition: background 0.2s;
-
-				>img {width: 8px;}
-				&:hover {background: #339860;}
-			}
+			.next-block{@extend %mainBtnNextPage;}
 		}
 	}
 </style>
