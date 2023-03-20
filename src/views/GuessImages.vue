@@ -1,6 +1,6 @@
 <template>
 	<div class="user-container">
-		<SliderThird />
+		<SliderThird class="slider-third"/>
 	
 		<div class="attemps px-3 mb-1">
 			<span>Смайлы </span>
@@ -88,11 +88,15 @@
 		font-size: 18px;
 		position: relative;
 		max-width: 425px;
-		margin-bottom: 10px;
+
+		.slider-third{margin-bottom: 20px;}
 
 		.attemps{
 			font-size: 12px;
 			>span:last-of-type{color: #6dc695;}
+			@media screen and (min-width: 410px){
+				font-size: 14px;
+			}
 		}
 
 		.category-container {

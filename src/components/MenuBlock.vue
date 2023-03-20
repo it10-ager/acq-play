@@ -1,34 +1,34 @@
 <template>
 	<div class="menu-block">
-		<div class="menu-btn">
+		<div class="menu-btn" @click="goToAroundPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/around.png" alt="around">
 			</div>
 			<div class="btn-title">Вокруг</div>
 		</div>
 
-		<div class="menu-btn">
+		<div class="menu-btn" @click="goToGamePage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/game.png" alt="game">
 			</div>
 			<div class="btn-title">Игра</div>
 		</div>
 
-		<div class="menu-btn">
+		<div class="menu-btn" @click="goToDialogPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/dialog.png" alt="dialog">
 			</div>
 			<div class="btn-title">Диалоги</div>
 		</div>
 
-		<div class="menu-btn">
+		<div class="menu-btn" @click="goToStoryPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/story.png" alt="story">
 			</div>
 			<div class="btn-title">История</div>
 		</div>
 
-		<div class="menu-btn">
+		<div class="menu-btn" @click="goToSettingsPage">
 			<div class="btn-img">
 				<img src="../assets/img/elements/settings.png" alt="settings">
 			</div>
@@ -46,7 +46,11 @@
 		},
 
 		methods: {
-			
+			goToAroundPage(){this.$router.push('/around');},
+			goToGamePage(){this.$router.push('/game');},
+			goToDialogPage(){this.$router.push('/dialog');},
+			goToStoryPage(){this.$router.push('/story');},
+			goToSettingsPage(){this.$router.push('/settings');},
 		},
 	};
 </script>
