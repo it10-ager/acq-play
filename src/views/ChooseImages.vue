@@ -34,9 +34,9 @@
 		</div>
 
 		<!--Main block to next page-->
-		<b-row class="join d-flex justify-content-center my-2" >
+		<b-row class="join d-flex justify-content-center my-2" v-if="hasActiveFood || hasActiveDrink || hasActiveRest">
 			<b-col>
-				<div class="next-block">
+				<div class="next-block" @click="goToNextProfilePage()">
 					<span class="w-100 text-center">Далее</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
 				</div>
@@ -106,12 +106,22 @@
 			};
 		},
 
-		/* computed: {
-			hasActiveBlock() {},
-		}, */
+		computed: {
+			hasActiveFood() {
+				return this.foodBlocks.some(block => block.isActive);
+				
+			},
+			hasActiveDrink() {
+				return this.drinkBlocks.some(block => block.isActive);
+			},
+			hasActiveRest() {
+				return this.restBlocks.some(block => block.isActive);
+			},
+		},
 
 		methods: {
 			toggleBlock(block) {block.isActive = !block.isActive;},
+			// goToNextProfilePage(){this.$router.push('/profile');}
 		},
 	};
 </script>
@@ -158,13 +168,8 @@
 					&{height: 90px;}
 				}
 
-				>img{
-					width: inherit;
-				}
-
-				&.active {
-					background-color: #339860;
-				}
+				>img{width: inherit;}
+				&.active {background-color: #339860;}
 			}
 		}
 
