@@ -87,14 +87,14 @@
 			},
 
 			checkEmailValidity() {
-				var emailExam = /^\S+@\S+\.\S+$/;
+				var emailCheck = /^\S+@\S+\.\S+$/;
 
 				if (!this.email.trim()) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'Поле e-mail пустое!';
-				} else if(!emailExam.test(this.email)) {
+				} else if(!emailCheck.test(this.email)) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';

@@ -84,15 +84,15 @@
 			},
 
 			checkFormValidity() {
-				var emailExam = /^\S+@\S+\.\S+$/;
-				var passExam = 5;	/*for test*/
+				var emailCheck = /^\S+@\S+\.\S+$/;
+				var passCheck = 5;	/*for test*/
 
 				if (!this.email.trim()) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'Поле e-mail пустое!';
-				} else if (!emailExam.test(this.email)) {
+				} else if (!emailCheck.test(this.email)) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';
@@ -109,7 +109,7 @@
 					this.passValid = false;
 					this.pass = '';
 					this.passPlaceholder = 'Поле пароль пустое!';
-				} else if (this.pass.length < passExam) { /*for test*/
+				} else if (this.pass.length < passCheck) { /*for test*/
 					this.passInvalid = true;
 					this.passValid = false;
 					this.pass = '';
@@ -123,7 +123,7 @@
 				
 				/* go to next page if all fields full and right*/
 				if(this.emailValid && this.passValid){
-       				/* this.$router.push('/registration'); */
+       				/* this.$router.push('/profile'); */
     			}
 			},
 

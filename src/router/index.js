@@ -5,6 +5,7 @@ import Registration from '../views/Registration.vue';
 import Authorization from '../views/Authorization.vue';
 import PassReset from '../views/PassReset.vue';
 import NewDataUser from '../views/NewDataUser.vue';
+import ChooseImages from '../views/ChooseImages.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
 		path: '/new-data-user',
 		name: 'NewDataUser',
 		component: NewDataUser,
+	},
+	{
+		path: '/choose-images',
+		name: 'ChooseImages',
+		component: ChooseImages,
 	},
 ];
 
