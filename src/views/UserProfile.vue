@@ -106,9 +106,9 @@
 		},
 
 		methods: {
-			/* goToMessageUser(){
-				this.$router.push('/dialog')
-			} */
+			goToMessageUser(){
+				this.$router.push('/correspondence')
+			}
 		}
 	};
 </script>

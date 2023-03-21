@@ -99,6 +99,7 @@
   
 <script>
 	export default {
+		name: 'SliderFirst',
 		data() {
 			return {activeBlock: 1}
 		},

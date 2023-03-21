@@ -123,6 +123,7 @@
 
 <script>
 	export default {
+		name: 'SliderThird',
 		data() {
 			return {
 				activeBlock: 1,

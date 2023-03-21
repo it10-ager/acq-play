@@ -44,6 +44,7 @@
 
 <script>
 	export default {
+		name: 'MenuBlock',
 		methods: {
 			goToAroundPage(){this.$router.push('/around');},
 			goToGamePage(){this.$router.push('/game');},

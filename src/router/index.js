@@ -12,6 +12,7 @@ import Success from '../views/Success.vue';
 import Loss from '../views/Loss.vue';
 import Timer from '../views/Timer.vue';
 import UserProfile from '../views/UserProfile.vue';
+import Correspondence from '../views/Correspondence.vue';
 import Around from '../views/Around.vue';
 
 Vue.use(VueRouter);
@@ -80,6 +81,11 @@ const routes = [
 		path: '/message',
 		name: 'UserProfile',
 		component: UserProfile,
+	},
+	{
+		path: '/correspondence',
+		name: 'Correspondence',
+		component: Correspondence,
 	},
 	{
 		path: '/around',

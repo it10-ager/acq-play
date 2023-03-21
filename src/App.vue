@@ -16,7 +16,7 @@
 
 	@font-face {
 		font-family: 'Myriad Pro';
-		src: url('./assets/fonts/MyriadPro-Regular.ttf') format('truetype');
+		src: url('./assets/fonts/MyriadPro-Regular.woff2') format('truetype');
 		font-weight: normal;
 		font-style: normal;
 	}

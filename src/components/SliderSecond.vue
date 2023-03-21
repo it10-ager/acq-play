@@ -147,6 +147,7 @@
 
 <script>
 	export default {
+		name: 'SliderSecond',
 		data() {
 			return {
 				activeBlock: 1,
