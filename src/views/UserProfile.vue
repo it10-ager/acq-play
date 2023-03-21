@@ -1,28 +1,23 @@
 <template>
 	<div class="user-container">
-		<div class="success-main">
-			<div class="title">
-				<span>УСПЕХ!</span>
-			</div>
+		<SliderThird class="slider-third" />
 
-			<div class="navigation">
-				<div class="view-profile">
-					<span @click="goToUserProfile">Посмотреть<br>профиль</span>
+		<b-row class="message-user d-flex justify-content-center my-2" @click="goToMessageUser()">
+			<b-col class="col-block">
+				<div class="next-block">
+					<span class="w-100 text-center">Написать</span>
+					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
 				</div>
-				<div class="dialog">
-					<img src="../assets/img/elements/dialog.png" alt="dialog">
-				</div>
-				<div class="next-profile">
-					<span @click="goToNextProfile">Следующий<br>профиль</span>
-				</div>
-			</div>
-		</div>
-			
+			</b-col>
+		</b-row>
+
+		<!--Title for page-->
+		<div class="text-center title mb-3">Картинки</div>
+
 		<div class="attemps">
 			<div class="main-image">
 				<div class="name">
 					<span>Смайлы </span>
-					<span>| Угадать: 0</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
@@ -35,8 +30,7 @@
 
 			<div class="main-image">
 				<div class="name">
-					<span>Алкоголь </span>
-					<span>| Угадать: 0</span>
+					<span>Алкоголь</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
@@ -49,8 +43,7 @@
 
 			<div class="main-image">
 				<div class="name">
-					<span>Еда </span>
-					<span>| Угадать: 0</span>
+					<span>Еда</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
@@ -69,8 +62,7 @@
 
 			<div class="main-image">
 				<div class="name">
-					<span>Безалкогольные напитки </span>
-					<span>| Угадать: 0</span>
+					<span>Безалкогольные напитки</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
@@ -87,7 +79,6 @@
 			<div class="main-image">
 				<div class="name">
 					<span>Европа </span>
-					<span>| Угадать: 0</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
@@ -104,18 +95,21 @@
 </template>
 
 <script>
+	import SliderThird from '../components/SliderThird.vue';
 	import MenuBlock from '../components/MenuBlock.vue';
 
 	export default {
-		name: 'Success',
+		name: 'UserProfile',
 		components: {
+			SliderThird,
 			MenuBlock,
 		},
 
-		methods:{
-			goToUserProfile(){return this.$router.push('/message');},
-			goToNextProfile(){return this.$router.push('/game');},
-		},
+		methods: {
+			/* goToMessageUser(){
+				this.$router.push('/dialog')
+			} */
+		}
 	};
 </script>
   
@@ -131,78 +125,40 @@
 		position: relative;
 		max-width: 425px;
 
-		.success-main{
-			background-image: url('../assets/img/background/fon_ishod.png');
-			background-size: cover;
-			background-repeat: no-repeat;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			padding: 20px 40px;
-			margin-bottom: 10px;
-			
-			.title{
-				font-size: 32px;
-				font-weight: bolder;
-				margin-bottom: 10px;
-			}
+		.slider-third{margin-bottom: 40px;}
 
-			.navigation{
-				display: flex;
-				align-items: center;
-				justify-content: center;
+		.message-user {
+			width: 85%;
+			margin: 0 auto;
 
-				.view-profile, .next-profile{
-					font-size: 16px;
-					font-weight: bold;
-					color: $bgMain;
-					line-height: 18px;
-					
-					>span{cursor: pointer;}
-					&.view-profile{margin-right: 30px;}
-					&.next-profile{margin-left: 30px;}
-					@media screen and (min-width: 410px){
-						&.view-profile{margin-right: 50px;}
-						&.next-profile{margin-left: 50px;}
-					}
-				}
-
-				.dialog{
-					border-radius: 50%;
-					background: $bgMain;
-					position: relative;
-					width: 50px;
-					height: 50px;
-					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
-					
-					@media screen and (min-width: 410px){
-						width: 60px;
-						height: 60px;
-					}
-					
-					>img{
-						width: 100%;
-						position: absolute;
-						top: 0;
-						left: 0;
-					}
+			.col-block{
+				padding: 0!important;
+				.next-block {
+					@extend %mainBtnNextPage;
+					margin-bottom: 20px
 				}
 			}
 		}
 
-		.attemps{
-			margin-bottom: 100px;
-			padding: 0 15px;
+		.title {
+			@extend %titleFont;
+			margin: 0;
+			font-size: 30px;
 
 			@media screen and (min-width: 410px){
-				padding: 0 25px;
+				font-size: 36px;
 			}
+		}
+
+		.attemps{
+			margin-bottom: 120px;
+			padding: 0 20px;
+
+			@media screen and (min-width: 410px){padding: 0 30px;}
 
 			.name{
 				margin-bottom: 5px;
 				font-size: 14px;
-				>span:last-of-type{color: $bgMain;}
 			}
 
 			.main-image{

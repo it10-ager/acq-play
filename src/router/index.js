@@ -11,6 +11,7 @@ import GuessImages from '../views/GuessImages.vue';
 import Success from '../views/Success.vue';
 import Loss from '../views/Loss.vue';
 import Timer from '../views/Timer.vue';
+import UserProfile from '../views/UserProfile.vue';
 import Around from '../views/Around.vue';
 
 Vue.use(VueRouter);
@@ -74,6 +75,11 @@ const routes = [
 		path: '/timer',
 		name: 'Timer',
 		component: Timer,
+	},
+	{
+		path: '/message',
+		name: 'UserProfile',
+		component: UserProfile,
 	},
 	{
 		path: '/around',
