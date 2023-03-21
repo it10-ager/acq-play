@@ -192,7 +192,7 @@
 					align-items: center;
 					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					font-size: 14px;
-					width: 280px;
+					width: 85%;
 					position: absolute;
 					bottom: 15px;
 					left: 0;
@@ -220,7 +220,7 @@
 					}
 					
 					@media screen and (min-width: 410px){
-						width: 350px;
+						
 						padding: 10px 20px;
 						.info-txt{
 						margin-right: 30px;
