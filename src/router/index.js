@@ -14,6 +14,10 @@ Vue.use(VueRouter);
 
 const routes = [
 	{
+		path: "/index.html",
+		redirect: "/" ,
+	},
+	{
 		path: '/',
 		name: 'Lang',
 		component: Lang,
@@ -61,6 +65,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+	base: '/dist/',
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
