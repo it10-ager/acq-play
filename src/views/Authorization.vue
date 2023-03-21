@@ -123,7 +123,7 @@
 				
 				/* go to next page if all fields full and right*/
 				if(this.emailValid && this.passValid){
-       				/* this.$router.push('/guess-images'); */
+       				this.$router.push('/game');
     			}
 			},
 

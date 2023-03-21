@@ -8,6 +8,7 @@ import NewDataUser from '../views/NewDataUser.vue';
 import ChooseImages from '../views/ChooseImages.vue';
 import DownloadUserPhoto from '../views/DownloadUserPhoto.vue';
 import GuessImages from '../views/GuessImages.vue';
+import Success from '../views/Success.vue';
 import Around from '../views/Around.vue';
 
 Vue.use(VueRouter);
@@ -53,9 +54,14 @@ const routes = [
 		component: DownloadUserPhoto,
 	},
 	{
-		path: '/guess-images',
+		path: '/game',
 		name: 'GuessImages',
 		component: GuessImages,
+	},
+	{
+		path: '/success',
+		name: 'Success',
+		component: Success,
 	},
 	{
 		path: '/around',

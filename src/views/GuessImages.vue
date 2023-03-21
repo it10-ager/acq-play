@@ -9,9 +9,33 @@
 
 		<div class="category-container px-3">
 			<b-row class="m-0">
-				<b-col class="col-block" v-for="(block, index) in guessImages" :key="index">
-					<div class="img-block" :class="{ active: block.isActive }" @click="toggleBlock(block)">
-						<img :src="block.imageSrc" :alt="block.altText">
+				<b-col class="col-block">
+					<div class="img-block" :class="{ active: block1.isActive }" @click="toggleBlock(block1)">
+						<img src="../assets/img/emoji/scream.png" alt="scream">
+					</div>
+				</b-col>
+
+				<b-col class="col-block">
+					<div class="img-block checked" @click="goToSuccess">
+						<img src="../assets/img/elements/check_mark.png" alt="relax">
+					</div>
+				</b-col>
+
+				<b-col class="col-block">
+					<div class="img-block checked">
+						<img src="../assets/img/elements/check_mark.png" alt="lover">
+					</div>
+				</b-col>
+
+				<b-col class="col-block">
+					<div class="img-block loss" @click="goToLoss">
+						<img src="../assets/img/elements/cross.png" alt="cool">
+					</div>
+				</b-col>
+
+				<b-col class="col-block">
+					<div class="img-block loss" @click="goToTimer">
+						<img src="../assets/img/elements/cross.png" alt="beauty">
 					</div>
 				</b-col>
 			</b-row>
@@ -35,44 +59,19 @@
 
 		data() {
 			return {
-				guessImages: [
-					{
-						imageSrc: require("../assets/img/emoji/scream.png"),
-						altText: "spaggeti",
-						isActive: false,
-					},
-					{
-						imageSrc: require("../assets/img/emoji/relax.png"),
-						altText: "salat",
-						isActive: false,
-					},
-					{
-						imageSrc: require("../assets/img/emoji/lover.png"),
-						altText: "ikra",
-						isActive: false,
-					},
-					{
-						imageSrc: require("../assets/img/emoji/cool.png"),
-						altText: "ikra",
-						isActive: false,
-					},
-					{
-						imageSrc: require("../assets/img/emoji/beauty.png"),
-						altText: "ikra",
-						isActive: false,
-					},
-				],
+				block1: {isActive: false},
+				/* block2: {isActive: false}, */
+				block3: {isActive: false},
+				block4: {isActive: false},
+				block5: {isActive: false}
 			};
-		},
-
-		computed: {
-			hasActiveFood() {
-				return this.foodBlocks.some(block => block.isActive);
-			},
 		},
 
 		methods: {
 			toggleBlock(block) {block.isActive = !block.isActive;},
+			goToSuccess(){return this.$router.push('/success');},
+			goToLoss(){return this.$router.push('/loss');},
+			goToTimer(){return this.$router.push('/timer');},
 		}
 	};
 </script>
@@ -94,9 +93,7 @@
 		.attemps{
 			font-size: 12px;
 			>span:last-of-type{color: #6dc695;}
-			@media screen and (min-width: 410px){
-				font-size: 14px;
-			}
+			@media screen and (min-width: 410px){font-size: 14px;}
 		}
 
 		.category-container {
@@ -114,14 +111,14 @@
 			.img-block {
 				background-color: #f1f1f1;
 				border-radius: 10px;
-				height: 80px;
+				height: 70px;
 				width: 100%;
 				cursor: pointer;
 				display: flex;
 				align-items: center;
 
 				@media screen and (max-width: 400px){
-					&{height: 70px;}
+					&{height: 60px;}
 				}
 
 				@media screen and (max-width: 325px){
@@ -130,6 +127,12 @@
 
 				>img{width: inherit;}
 				&.active {background-color: #339860;}
+				&.checked{background-color: #6dc695;}
+				&.loss{
+					justify-content: center;
+					background-color: $errorColor;
+					>img{width: 40px;}
+				}
 			}
 		}
 	}

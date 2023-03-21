@@ -27,7 +27,7 @@
 </template>
   
 <script>
-	import SliderSecond from '@/components/SliderSecond.vue';
+	import SliderSecond from '../components/SliderSecond.vue';
 
 	export default {
 		name: 'DownloadUserPhoto',
@@ -43,7 +43,7 @@
 		},
 
 		methods: {
-			goToGuessImages(){this.$router.push('/guess-images');}
+			goToGuessImages(){this.$router.push('/game');}
 		},
 	};
 </script>
