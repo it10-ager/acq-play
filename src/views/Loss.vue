@@ -2,15 +2,16 @@
 	<div class="user-container">
 		<div class="success-main">
 			<div class="title">
-				<span>УСПЕХ!</span>
+				<span>В СЛЕДУЮЩИЙ РАЗ!</span>
 			</div>
 
 			<div class="navigation">
 				<div class="view-profile">
-					<span @click="goToMessUser">Посмотреть<br>профиль</span>
+					<span>Смотреть<br>рекламу</span>
 				</div>
-				<div class="dialog">
-					<img src="../assets/img/elements/dialog.png" alt="dialog">
+				<div class="premium">
+					<span>9</span>
+					<img src="../assets/img/elements/Ic_favorite_outline.png" alt="premium">
 				</div>
 				<div class="next-profile">
 					<span @click="goToNextProfile">Следующий<br>профиль</span>
@@ -22,12 +23,15 @@
 			<div class="main-image">
 				<div class="name">
 					<span>Смайлы </span>
-					<span>| Угадать: 0</span>
+					<span>| Угадать: 1</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
 						<div class="img-block">
 							<img src="../assets/img/emoji/scream.png" alt="scream">
+						</div>
+						<div class="img-block question">
+							<img src="../assets/img/elements/question.png" alt="scream">
 						</div>
 					</b-col>
 				</b-row>
@@ -36,12 +40,18 @@
 			<div class="main-image">
 				<div class="name">
 					<span>Алкоголь </span>
-					<span>| Угадать: 0</span>
+					<span>| Угадать: 2</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
 						<div class="img-block">
 							<img src="../assets/img/food/beer.png" alt="beer">
+						</div>
+						<div class="img-block question">
+							<img src="../assets/img/elements/question.png" alt="scream">
+						</div>
+						<div class="img-block question">
+							<img src="../assets/img/elements/question.png" alt="scream">
 						</div>
 					</b-col>
 				</b-row>
@@ -50,7 +60,7 @@
 			<div class="main-image">
 				<div class="name">
 					<span>Еда </span>
-					<span>| Угадать: 0</span>
+					<span>| Угадать: 1</span>
 				</div>
 				<b-row class="m-0 w-100">
 					<b-col class="col-block">
@@ -62,6 +72,9 @@
 						</div>
 						<div class="img-block">
 							<img src="../assets/img/food/ikra.png" alt="ikra">
+						</div>
+						<div class="img-block question">
+							<img src="../assets/img/elements/question.png" alt="scream">
 						</div>
 					</b-col>
 				</b-row>
@@ -107,18 +120,18 @@
 	import MenuBlock from '../components/MenuBlock.vue';
 
 	export default {
-		name: 'Success',
+		name: 'Loss',
 		components: {
 			MenuBlock,
 		},
 
 		methods:{
-			goToMessUser(){return this.$router.push('/message');},
+			/* goToMessUser(){return this.$router.push('/message');}, */
 			goToNextProfile(){return this.$router.push('/game');},
 		},
 	};
 </script>
-  
+
 <style scoped lang="scss">
 	@import '../assets/extend';
 	@import '../assets/vars';
@@ -143,9 +156,13 @@
 			margin-bottom: 10px;
 			
 			.title{
-				font-size: 32px;
+				font-size: 26px;
 				font-weight: bolder;
 				margin-bottom: 10px;
+
+				@media screen and (min-width: 410px){
+					font-size: 32px;
+				}
 			}
 
 			.navigation{
@@ -168,24 +185,29 @@
 					}
 				}
 
-				.dialog{
+				.premium{
 					border-radius: 50%;
 					background: $bgMain;
 					position: relative;
 					width: 50px;
 					height: 50px;
 					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
-					
+					color: $fontColor;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					>span{margin-top: 5px;}
+
 					@media screen and (min-width: 410px){
 						width: 60px;
 						height: 60px;
 					}
 					
 					>img{
-						width: 100%;
+						width: 89%;
 						position: absolute;
-						top: 0;
-						left: 0;
+						top: 8px;
+						left: 3px;
 					}
 				}
 			}
@@ -194,10 +216,7 @@
 		.attemps{
 			margin-bottom: 100px;
 			padding: 0 15px;
-
-			@media screen and (min-width: 410px){
-				padding: 0 25px;
-			}
+			@media screen and (min-width: 410px){padding: 0 25px;}
 
 			.name{
 				margin-bottom: 5px;
@@ -221,13 +240,26 @@
 				.img-block {
 					background-color: #f1f1f1;
 					border-radius: 10px;
-					height: 80px;
-					width: 80px;
+					height: 65px;
+					width: 65px;
 					cursor: pointer;
 					display: flex;
 					align-items: center;
 					&:not(:last-of-type){margin-right: 10px;}
 					>img{width: inherit;}
+
+					@media screen and (min-width: 410px){
+						height: 80px;
+						width: 80px;
+					}
+
+					&.question{
+						justify-content: center;
+						>img{
+							width: 50px;
+							height: 50px;
+						}
+					}
 				}
 			}
 		}

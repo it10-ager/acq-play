@@ -9,6 +9,7 @@ import ChooseImages from '../views/ChooseImages.vue';
 import DownloadUserPhoto from '../views/DownloadUserPhoto.vue';
 import GuessImages from '../views/GuessImages.vue';
 import Success from '../views/Success.vue';
+import Loss from '../views/Loss.vue';
 import Around from '../views/Around.vue';
 
 Vue.use(VueRouter);
@@ -62,6 +63,11 @@ const routes = [
 		path: '/success',
 		name: 'Success',
 		component: Success,
+	},
+	{
+		path: '/loss',
+		name: 'Loss',
+		component: Loss,
 	},
 	{
 		path: '/around',

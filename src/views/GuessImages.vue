@@ -60,10 +60,6 @@
 		data() {
 			return {
 				block1: {isActive: false},
-				/* block2: {isActive: false}, */
-				block3: {isActive: false},
-				block4: {isActive: false},
-				block5: {isActive: false}
 			};
 		},
 
