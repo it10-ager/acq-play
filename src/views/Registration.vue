@@ -33,7 +33,7 @@
 
 			<div class="lang">
 				<span>Язык: </span>
-				<span class="change-lang">Русский</span>
+				<span class="change-lang" @click="goToLangPage">Русский</span>
 			</div>
 		</div>
 
@@ -110,6 +110,10 @@
 				if(this.emailValid){
        				this.$router.push('/new-data-user');
     			}
+			},
+
+			goToLangPage(){
+				return this.$router.push('/');
 			},
 
 			passReset(){

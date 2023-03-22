@@ -14,6 +14,12 @@ import Timer from '../views/Timer.vue';
 import UserProfile from '../views/UserProfile.vue';
 import Correspondence from '../views/Correspondence.vue';
 import Around from '../views/Around.vue';
+import Dialog from '../views/Dialog.vue';
+import Chats from '../views/Chats.vue';
+import Favorite from '../views/Favorite.vue';
+import Story from '../views/Story.vue';
+import You from '../views/You.vue';
+import Mutually from '../views/Mutually.vue';
 
 Vue.use(VueRouter);
 
@@ -91,6 +97,36 @@ const routes = [
 		path: '/around',
 		name: 'Around',
 		component: Around,
+	},
+	{
+		path: '/dialog',
+		name: 'Dialog',
+		component: Dialog,
+	},
+	{
+		path: '/chats',
+		name: 'Chats',
+		component: Chats,
+	},
+	{
+		path: '/favorite-dialog',
+		name: 'Favorite',
+		component: Favorite,
+	},
+	{
+		path: '/story',
+		name: 'Story',
+		component: Story,
+	},
+	{
+		path: '/you',
+		name: 'You',
+		component: You,
+	},
+	{
+		path: '/mutually',
+		name: 'Mutually',
+		component: Mutually,
 	},
 ];
 

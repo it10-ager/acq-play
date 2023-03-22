@@ -33,7 +33,7 @@
 		<!--Reset password-->
 		<b-row class="my-2">
 			<b-col class="text-center">
-				<span @click="passReset" style="cursor: pointer;">Забыли свой пароль?</span>
+				<span @click="goToAuth" style="cursor: pointer;">Вспомнили свой пароль?</span>
 			</b-col>
 		</b-row>
 	</div>
@@ -79,8 +79,8 @@
 				}
 			},
 
-			passReset() {
-				this.$router.push('/passreset');
+			goToAuth() {
+				this.$router.push('/authorization');
 			},
 		},
 	};
@@ -102,7 +102,7 @@
 			border-radius: 50px;
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: center;
-			margin-bottom: 140px;
+			margin-bottom: 197px;
 
 			&.is-invalid {
 				&::placeholder {color: rgb(255, 174, 0);}

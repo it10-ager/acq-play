@@ -145,7 +145,7 @@
 		.registration {
 			display: flex;
 			width: 100%;
-			margin: 0 auto 60px;
+			margin: 0 auto 65px;
 			justify-content: space-between;
 			align-items: center;
 			border-radius: 50px;

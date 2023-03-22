@@ -4,7 +4,7 @@
 		<div class="text-center title">Найди любовь играя!</div>
 
 		<!--Name-->
-		<input class="input-text" type="text" :placeholder="namePlaceholder" v-model="name"
+		<input class="input-text" type="text" maxlength="15" :placeholder="namePlaceholder" v-model="name"
 		:class="{ 'is-invalid': nameInvalid, 'is-valid': nameValid }" />
 		
 		<!--Gender-->
@@ -19,22 +19,23 @@
 			</div>
 
 			<ul v-if="showGender" class="list">
-				<li v-for="(genderOption, index) in genderOptions" :key="index">
-					<span @click="selectGender(genderOption)">{{ genderOption }}</span>
-				</li>
+  				<li v-for="(genderOption, index) in genderOptions" :key="index">
+   					<span @click="selectGender(genderOption)" 
+					:class="{ 'is-invalid': genderInvalid, 'is-valid': genderValid }">{{ genderOption }}</span>
+  				</li>
 			</ul>
   		</div>
 
 		<!--Date birthday-->
-		<input class="input-text" type="text" :placeholder="birthPlaceholder" v-model="birth"
+		<input class="input-text date" type="date" :placeholder="birthPlaceholder" v-model="birth"
 		:class="{ 'is-invalid': birthInvalid, 'is-valid': birthValid }" />
 
 		<!--City-->
-		<input class="input-text" type="text" :placeholder="cityValue" v-model="city"
+		<input class="input-text" maxlength="15" type="text" :placeholder="cityValue" v-model="city"
 		:class="{ 'is-invalid': cityInvalid, 'is-valid': cityValid }" />
 
 		<!--Company-->
-		<input class="input-text" type="text" :placeholder="companyPlaceholder" v-model="company"
+		<input class="input-text" maxlength="15" type="text" :placeholder="companyPlaceholder" v-model="company"
 		:class="{ 'is-invalid': companyInvalid, 'is-valid': companyValid }" />
 
 		<!--Busy-->
@@ -95,6 +96,7 @@
 
 		data() {
 			return {
+				showNextBlock: false,
 				name: '',
 				namePlaceholder: 'Введите имя',
 				nameInvalid: false,
@@ -103,6 +105,8 @@
 				gender: 'Выберите пол',
 				genderOptions: ['Мужской', 'Женский'],
      			showGender: false,
+				genderInvalid: false,
+				genderValid: false,
 
 				busy: 'Выберите род занятий',
 				busyOptions: ['Работаю', 'Учусь', 'Ничего не делаю'],
@@ -136,21 +140,29 @@
 
 		methods: {
 			selectGender(genderOption) {
-				this.gender = genderOption;
-				this.showGender = false;
+				if (genderOption === this.gender) {
+					this.showGender = false;
+				} else {
+					this.gender = genderOption;
+					this.showGender = true;
 
-				var arrow = document.querySelectorAll('.gender .arrow > span');
-				arrow.forEach(function(arrow) {
-  					arrow.style.backgroundColor = '#3cb371';
-   		 		});
+					var arrow = document.querySelectorAll('.gender .arrow > span');
+					arrow.forEach(function(arrow) {
+						arrow.style.backgroundColor = '#3cb371';
+					});
 
-				var newColor = document.querySelector('.gender .placeholder-txt > span')
-				newColor.style.color = '#000';
+					var newColor = document.querySelector('.gender .placeholder-txt > span')
+					newColor.style.color = '#000';
+				}
 			},
 
 			selectBusy(busyOption) {
-				this.busy = busyOption;
-				this.showBusy = false;
+				if (busyOption === this.busy) {
+					this.showBusy = false;
+				} else {
+					this.busy = busyOption;
+					this.showBusy = true;
+				}
 
 				var arrow = document.querySelectorAll('.busy .arrow > span');
 				arrow.forEach(function(arrow) {
@@ -162,8 +174,12 @@
 			},
 
 			selectTarget(targetOption) {
-				this.target = targetOption;
-				this.showTarget = false;
+				if (targetOption === this.target) {
+					this.showTarget = false;
+				} else {
+					this.target = targetOption;
+					this.showTarget = true;
+				}
 
 				var arrow = document.querySelectorAll('.target .arrow > span');
 				arrow.forEach(function(arrow) {
@@ -176,13 +192,7 @@
 
 			checkFormValidity() {
 				var emailCheck = /^\S+@\S+\.\S+$/;
-				var nameCheck = 2;	
-				var companyCheck = 2;	
-				/* var birthCheck = /^\d{2}\.\d{2}\.\d{2}$/;
-				let parts = this.birth.split('.')
-      			let day = parseInt(parts[0], 10)
-      			let month = parseInt(parts[1], 10)
-      			let year = parseInt(parts[2], 10) */
+				var nameCheck = 2;
 
 				/* name check */
 				if (!this.name.trim()) {
@@ -194,7 +204,7 @@
 					this.nameInvalid = true;
 					this.nameValid = false;
 					this.name = '';
-					this.namePlaceholder = 'Имя должно содержать от 2 букв';
+					this.namePlaceholder = 'Имя должно сержать от 2 букв';
 				} else {
 					this.nameInvalid = false;
 					this.nameValid = true;
@@ -202,52 +212,43 @@
 					this.namePlaceholder = 'Введите имя';
 				}
 
+				if (!this.city.trim()) {
+					this.cityInvalid = true;
+					this.cityValid = false;
+					this.city = '';
+				} else {
+					this.cityInvalid = false;
+					this.cityValid = true;
+					this.city = '';
+					this.cityPlaceholder = 'Введите город';
+				}
+
+				if (!this.birth.trim()) {
+					this.birthInvalid = true;
+					this.birthValid = false;
+					this.birth = '';
+				} else {
+					this.birthInvalid = false;
+					this.birthValid = true;
+					this.birth = '';
+					this.birthPlaceholder = 'Введите дату рождения';
+				}
+
 				/* email check */
-				if (!this.email.trim()) {
-					this.emailInvalid = true;
-					this.emailValid = false;
-					this.email = '';
-					this.emailPlaceholder = 'Поле e-mail пустое!';
-				} else if (!emailCheck.test(this.email)) {
+				/* if (!emailCheck.test(this.email)) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'E-mail содержит ошибку';
-				} else {
+				} else{
 					this.emailInvalid = false;
 					this.emailValid = true;
 					this.email = '';
 					this.emailPlaceholder = 'Введите e-mail (для отправки пароля)';
-				}
-
-				/* birth check and day month year */
-				/* if (!birthCheck.test(this.birth) && (day < 1 || day > 31 || month < 1 || month > 12 || year < 99 || year > 99)) {
-					this.birthInvalid = true;
-					this.birthValid = false;
-					this.birth = '';
-					this.birthPlaceholder = 'Некорректная дата (31.12.99)';
 				} */
 
-				/* company check */
-				if (!this.company.trim()) {
-					this.companyInvalid = true;
-					this.companyValid = false;
-					this.company = '';
-					this.companyPlaceholder = 'Поле компания пустое!';
-				} else if (this.company.length < companyCheck) {
-					this.companyInvalid = true;
-					this.companyValid = false;
-					this.company = '';
-					this.companyPlaceholder = 'Поле должно содержать от 2 букв';
-				} else {
-					this.companyInvalid = false;
-					this.companyValid = true;
-					this.company = '';
-					this.companyPlaceholder = 'Введите компанию';
-				}
-				
 				/* go to next page if all fields full and right*/
-				if(this.nameValid && this.companyValid && this.emailValid){
+				if(this.nameValid && this.birthValid && this.cityValid){
        				this.$router.push('/choose-images');
     			}
 			},
@@ -263,7 +264,10 @@
 		@extend %mainWrapper;
 		font-size: 18px;
 
-		.title {@extend %titleFont;}
+		.title {
+			@extend %titleFont;
+			margin-bottom: 30px;
+		}
 
 		.input-text, .block-text {
 			border: 0;
@@ -272,11 +276,14 @@
 			border-radius: 50px;
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: left;
-			margin-bottom: 20px;
+			margin-bottom: 12px;
 
+			&.date{
+				&::placeholder{color: #b6b6b6}
+			}
 
 			&.input-text{
-				&.email{margin-bottom: 50px;}
+				&.email{margin-bottom: 45px;}
 			}
 
 			&.is-invalid {

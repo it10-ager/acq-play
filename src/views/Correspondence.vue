@@ -1,15 +1,19 @@
 <template>
 	<div class="user-container">
 		<div class="navigation">
+			<!---->
 			<div class="back-page">
-				<span>Вернуться к диалогам</span>
+				<span @click="goToDialog">Вернуться к диалогам</span>
 			</div>
 			
+			<!---->
 			<div class="user-info">
 				<div class="avatar-title">
 					<div class="avatar">
 						<img src="../assets/img/elements/user_avatar.png" alt="user">
 					</div>
+
+					<!---->
 					<div class="title">
 						<span>Марина, 27</span>
 						<span>Москва</span>
@@ -17,7 +21,8 @@
 						<span>Последнее сообщение 17:20, 19.05.17</span>
 					</div>
 				</div>
-				
+
+				<!---->
 				<div class="favorite-trash">
 					<div>
 						<img src="../assets/img/elements/star.png" alt="star">
@@ -29,7 +34,27 @@
 			</div>
 		</div>
 		
+		<div class="messages">
+			<div class="incoming block">
+				<span>Привет как дела?</span>
+			</div>
 
+			<div class="outgoing block">
+				<span>Привет! Дела нормально. Любишь пиццу?</span>
+			</div>
+
+			<div class="incoming block">
+				<span>Обожаю! Свободна после 18:00 на Арбатской.</span>
+			</div>
+
+			<div class="outgoing block">
+				<span>Ок. Я как раз в 2 станциях метро буду.</span>
+			</div>
+
+			<div class="outgoing block">
+				<img src="../assets/img/emoji/lover.png" alt="emoji">
+			</div>
+		</div>
 
 		<MenuBlockInput />
 	</div>
@@ -45,7 +70,9 @@
 		},
 
 		methods: {
-			
+			goToDialog(){
+				return this.$router.push('/dialog');
+			}
 		}
 	};
 </script>
@@ -64,6 +91,7 @@
 
 		.navigation{
 			padding: 30px 20px 0;
+			margin-bottom: 15px;
 			/* position: fixed;
 			top: 0;
 			right: 0;
@@ -78,6 +106,7 @@
 				margin-bottom: 10px;
 				border-bottom: 1px solid #6dc695;
 				@media screen and (min-width: 410px){font-size: 14px;}
+				>span{cursor: pointer;}
 			}
 
 			.user-info{
@@ -148,21 +177,43 @@
 			}
 		}
 
-		/* .message-user {
-			width: 85%;
-			margin: 0 auto;
+		.messages{
+			margin-bottom: 180px;
+			padding: 0 20px;
+			display: flex;
+			flex-direction: column;
 
-			.col-block{
-				padding: 0!important;
-				.next-block {
-					@extend %mainBtnNextPage;
-					margin-bottom: 20px
+			.block{
+				border-radius: 10px;
+				padding: 15px 15px;
+				text-align: left;
+				background: $bgMain;
+				margin-bottom: 10px;
+				font-size: 12px;
+				width: 80%;
+
+				@media screen and (min-width: 410px){
+					font-size: 15px;
+					padding: 15px 20px;
+				}
+
+				&.incoming{
+					background: #fff;
+					align-self: flex-start;
+				}
+
+				&.outgoing{
+					color: $fontColor;
+					&:last-of-type{
+						text-align: center;
+						padding: 0 15px;
+					}
+					transition: background 0.2s;
+					&:hover {background: #339860;}
+					align-self: flex-end;
+					>img{width: 70%;}
 				}
 			}
-		} */
-
-		
-
-		
+		}
 	}
 </style>

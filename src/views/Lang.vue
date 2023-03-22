@@ -43,7 +43,12 @@
 		},
 
 		methods: {
-			toggleLanguage(index) { this.languages[index].active = !this.languages[index].active; },
+			toggleLanguage(index) {
+				this.languages.forEach((lang, i)=>{
+					if (i === index) {lang.active = !lang.active;} 
+					else {lang.active = false;}
+				});
+			},
 			/* go to next page */
 			goToRegistration() {this.$router.push('/registration');},
 		}
@@ -76,7 +81,6 @@
 				box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 				font-size: 16px;
 				color: #000;
-				font-weight: bold;
 				background: #ffffff;
 				border-radius: 50px;
 				padding: 15px 30px;

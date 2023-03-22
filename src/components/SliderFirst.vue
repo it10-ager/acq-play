@@ -141,7 +141,7 @@
 
 				&:first-of-type{
 					.img-slide{
-						>img{height: 178px;}
+						>img{height: 189px;}
 					}
 				}
 			}
