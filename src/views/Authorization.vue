@@ -26,7 +26,7 @@
 
 			<div class="lang">
 				<span>Язык: </span>
-				<span class="change-lang">Русский</span>
+				<span class="change-lang" @click="goToLangPage">Русский</span>
 			</div>
 		</div>
 
@@ -130,6 +130,11 @@
 			passReset() {
 				this.$router.push('/passreset');
 			},
+			
+			goToLangPage(){
+				return this.$router.push('/');
+			},
+
 		},
 	};
 </script>
@@ -145,7 +150,7 @@
 		.registration {
 			display: flex;
 			width: 100%;
-			margin: 0 auto 65px;
+			margin: 0 auto 66px;
 			justify-content: space-between;
 			align-items: center;
 			border-radius: 50px;

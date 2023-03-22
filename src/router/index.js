@@ -20,6 +20,12 @@ import Favorite from '../views/Favorite.vue';
 import Story from '../views/Story.vue';
 import You from '../views/You.vue';
 import Mutually from '../views/Mutually.vue';
+import MyProfile from '../views/MyProfile.vue';
+import ChooseProfileImages from '../views/ChooseProfileImages.vue';
+import SavedImages from '../views/SavedImages.vue';
+import Help from '../views/Help.vue';
+import Store from '../views/Store.vue';
+import Rules from '../views/Rules.vue';
 
 Vue.use(VueRouter);
 
@@ -127,6 +133,36 @@ const routes = [
 		path: '/mutually',
 		name: 'Mutually',
 		component: Mutually,
+	},
+	{
+		path: '/my-profile',
+		name: 'MyProfile',
+		component: MyProfile,
+	},
+	{
+		path: '/add',
+		name: 'ChooseProfileImages',
+		component: ChooseProfileImages,
+	},
+	{
+		path: '/saved',
+		name: 'SavedImages',
+		component: SavedImages,
+	},
+	{
+		path: '/help',
+		name: 'Help',
+		component: Help,
+	},
+	{
+		path: '/store',
+		name: 'Store',
+		component: Store,
+	},
+	{
+		path: '/rules',
+		name: 'Rules',
+		component: Rules,
 	},
 ];
 

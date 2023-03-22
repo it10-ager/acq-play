@@ -144,6 +144,8 @@
 						>img{height: 189px;}
 					}
 				}
+
+				&:last-of-type{margin-top: 130px;}
 			}
 		}
 
@@ -158,7 +160,7 @@
 				border-radius: 50%;
 				margin-bottom: 10px;
 				cursor: pointer;
-
+				&:hover{background-color: #59be86;}
 				&.active{background-color: $bgMain;}
 			}
 		}

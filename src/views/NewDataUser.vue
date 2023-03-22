@@ -27,8 +27,8 @@
   		</div>
 
 		<!--Date birthday-->
-		<input class="input-text date" type="date" :placeholder="birthPlaceholder" v-model="birth"
-		:class="{ 'is-invalid': birthInvalid, 'is-valid': birthValid }" />
+		<input class="input-text date" type="text" :placeholder="birthPlaceholder" v-model.lazy="birth"
+		:class="{ 'is-invalid': birthInvalid, 'is-valid': birthValid }" @input="formatDateInput"/>
 
 		<!--City-->
 		<input class="input-text" maxlength="15" type="text" :placeholder="cityValue" v-model="city"
@@ -117,7 +117,7 @@
 				showTarget: false,
 
 				birth: '',
-				birthPlaceholder: 'Введите дату рождения',
+				birthPlaceholder: 'Введите дату рождения (числа)',
 				birthInvalid: false,
 				birthValid: false,
 
@@ -190,8 +190,24 @@
 				newColor.style.color = '#000';
 			},
 
+			formatDateInput(event) {
+				let input = event.target.value.replace(/\D/g, '').substring(0, 8);
+				let day = input.substring(0, 2);
+				let month = input.substring(2, 4);
+				let year = input.substring(4, 8);
+
+				if (input.length > 4) {
+					event.target.value = `${day}.${month}.${year}`;
+				} else if (input.length > 2) {
+					event.target.value = `${day}.${month}`;
+				} else if (input.length > 0) {
+					event.target.value = `${day}`;
+				}
+				this.birth = event.target.value;
+			},
+
 			checkFormValidity() {
-				var emailCheck = /^\S+@\S+\.\S+$/;
+				/* var emailCheck = /^\S+@\S+\.\S+$/; */
 				var nameCheck = 2;
 
 				/* name check */
@@ -231,7 +247,7 @@
 					this.birthInvalid = false;
 					this.birthValid = true;
 					this.birth = '';
-					this.birthPlaceholder = 'Введите дату рождения';
+					this.birthPlaceholder = 'Введите дату рождения (цифры)';
 				}
 
 				/* email check */
@@ -266,7 +282,7 @@
 
 		.title {
 			@extend %titleFont;
-			margin-bottom: 30px;
+			margin: 7% 0 30px;
 		}
 
 		.input-text, .block-text {

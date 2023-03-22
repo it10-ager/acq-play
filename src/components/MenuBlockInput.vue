@@ -68,7 +68,7 @@
 			goToGamePage(){this.$router.push('/game');},
 			goToDialogPage(){this.$router.push('/dialog');},
 			goToStoryPage(){this.$router.push('/story');},
-			goToSettingsPage(){this.$router.push('/settings');},
+			goToSettingsPage(){this.$router.push('/my-profile');},
 		},
 	};
 </script>

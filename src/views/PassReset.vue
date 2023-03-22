@@ -16,7 +16,7 @@
 
 			<div class="lang">
 				<span>Язык: </span>
-				<span class="change-lang">Русский</span>
+				<span class="change-lang" @click="goToLangPage">Русский</span>
 			</div>
 		</div>
 
@@ -82,6 +82,10 @@
 			goToAuth() {
 				this.$router.push('/authorization');
 			},
+
+			goToLangPage(){
+				return this.$router.push('/');
+			},
 		},
 	};
 </script>
@@ -102,7 +106,7 @@
 			border-radius: 50px;
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: center;
-			margin-bottom: 197px;
+			margin-bottom: 198px;
 
 			&.is-invalid {
 				&::placeholder {color: rgb(255, 174, 0);}

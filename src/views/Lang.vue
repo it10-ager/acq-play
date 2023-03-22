@@ -73,6 +73,15 @@
 			.lang-block.active {
 				color: $fontColor;
 				background: $bgMain;
+				transition: background 0.2s;
+				&:hover {background: $bgMain;}
+			}
+
+			.lang-block{
+				&:hover {
+					color: $fontColor;
+					background: #339860;
+				}
 			}
 
 			.next-block, .lang-block {
@@ -94,7 +103,7 @@
 				align-items: center;
 				background: $bgMain;
 				color: $fontColor;
-
+				
 				>img {width: 8px;}
 				&:hover {background: #339860;}
 			}
