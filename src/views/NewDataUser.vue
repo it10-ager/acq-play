@@ -402,7 +402,7 @@
 				}
 
 				/* email check */
-				var emailCheck = /^\S+@\S+\.\S+$/;
+				/* var emailCheck = /^\S+@\S+\.\S+$/;
 				if (!this.email.trim()) {
 					this.emailInvalid = true;
 					this.emailValid = false;
@@ -418,7 +418,7 @@
 					this.emailValid = true;
 					this.email = '';
 					this.emailPlaceholder = 'Введите e-mail для регистрации';
-				}
+				} */
 
 				if (this.nameValid && this.birthValid ) {this.isValid = true;}
 				else {this.isValid = false;}
