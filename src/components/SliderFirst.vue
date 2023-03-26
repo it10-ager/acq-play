@@ -114,10 +114,11 @@
 	@import "../assets/vars";
 
 	.main-slider{
-		margin-bottom: 30px;
+		margin-bottom: 6%;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
+		max-width: inherit;
 
 		.slides{
 			width: 100%;
@@ -131,21 +132,18 @@
 					opacity: 1;
 				}
 
-				.title {@extend %titleFont;}
+				.title {
+					@extend %titleFont;
+					margin: 5% 0 2%;
+				}
 
 				.img-slide{
 					display: flex;
 					justify-content: center;
-					>img{height: 190px;}
+					>img{height: 200px;}
 				}
 
-				&:first-of-type{
-					.img-slide{
-						>img{height: 189px;}
-					}
-				}
-
-				&:last-of-type{margin-top: 130px;}
+				&:last-of-type{margin-top: 19%;}
 			}
 		}
 

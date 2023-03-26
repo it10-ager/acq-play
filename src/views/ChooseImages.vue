@@ -35,7 +35,7 @@
 
 		<!--Main block to next page-->
 		<b-row class="join d-flex justify-content-center my-2" v-if="hasActiveFood || hasActiveDrink || hasActiveRest">
-			<b-col>
+			<b-col class="p-0">
 				<div class="next-block" @click="goToNextProfilePage()">
 					<span class="w-100 text-center">Далее</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
@@ -132,11 +132,12 @@
 
 	.images-select {
 		@extend %mainWrapper;
-		font-size: 18px;
-
+		max-width: inherit;
+		@media screen and (max-width: 415px){justify-content: center;}
+		
 		.title {
 			@extend %titleFont;
-			font-size: 38px;
+			margin: 5% 0 5%;
 		}
 
 		.category-container {
@@ -144,7 +145,7 @@
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: center;
-			margin-bottom: 50px;
+			margin-bottom: 7%;
 
 			.col-block{
 				padding: 0!important;
@@ -152,31 +153,56 @@
 			}
 
 			.img-block {
-				background-color: #f1f1f1;
+				-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				background-image: -moz-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+				background-image: -webkit-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+				background-image: -ms-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+				background-image: linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
 				border-radius: 10px;
-				height: 120px;
+				border-style: solid;
+				border-width: 1px;
+				border-color: rgb(204, 204, 204);
+				height: 90px;
 				width: 100%;
 				cursor: pointer;
 				display: flex;
 				align-items: center;
 
-				@media screen and (max-width: 400px){
-					&{height: 110px;}
+				@media screen and (min-width: 335px){
+					height: 100px;
 				}
 
-				@media screen and (max-width: 325px){
-					&{height: 90px;}
+				@media screen and (min-width: 400px){
+					height: 120px;
+				}
+
+				@media screen and (min-width: 450px){
+					height: 140px;
 				}
 
 				>img{width: inherit;}
-				&.active {background-color: #339860;}
+				&:hover{
+					background-image: -moz-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					background-image: -webkit-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					background-image: -ms-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					background-image: linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					
+				}
+				&.active {
+					background-image: -moz-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: -webkit-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: -ms-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+				}
 			}
 		}
 
 		.join {
+			@extend %width;
 			.next-block {
 				@extend %mainBtnNextPage;
-				margin-bottom: 40px;
 			}
 		}
 	}

@@ -32,7 +32,7 @@
 
 		<!--Main block to next page-->
 		<b-row class="join d-flex justify-content-center my-2">
-			<b-col>
+			<b-col class="p-0">
 				<div class="next-block" @click="checkFormValidity()">
 					<span class="w-100 text-center">Войти</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
@@ -145,18 +145,18 @@
 
 	.search-love {
 		@extend %mainWrapper;
-		font-size: 16px;
-		.title {@extend %titleFont;}
+		max-width: inherit;
+		@media screen and (max-width: 415px){justify-content: center;}
+
 		.registration {
 			display: flex;
-			width: 100%;
-			margin: 0 auto 66px;
+			@extend %width;
+			margin: 0 auto 18.5%;
 			justify-content: space-between;
 			align-items: center;
 			border-radius: 50px;
 			background: #fff;
 			color: #b6b6b6;
-			font-size: 16px;
 			-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
@@ -181,31 +181,12 @@
 
 				&.active {
 					padding: 12px 60px;
-					color: $fontColor;
-					border-radius: 50px;
-					background: $bgMain;
-					-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
-					-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
-					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
-					transition: background 0.2s ease;
+					@extend %activeBtnBlack;
+					padding: 12px 40px;
+					@media screen and (min-width: 340px){padding: 12px 50px;}
+					@media screen and (min-width: 385px){padding: 12px 60px;}
+					@media screen and (min-width: 500px){padding: 12px 70px;}
 				}
-
-				@media screen and (max-width: 385px){
-					&.active {padding: 12px 50px;}
-				}
-
-				@media screen and (max-width: 340px){
-					&.active {padding: 12px 40px;}
-				}
-			}
-		}
-
-		.social{
-			margin-bottom: 30px;
-			div{
-				width: 60px;
-				&:first-of-type{margin-right: 20px;}
-				>img{width: inherit;}
 			}
 		}
 
@@ -214,11 +195,14 @@
 			outline: none;
 			padding: 10px;
 			border-radius: 50px;
+			-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+			-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: center;
-			margin-bottom: 25px;
+			margin: 0 auto 8%;
+			@extend %width;
 
-			&.input-email {margin-bottom: 15px;}
+			&.input-email {margin-bottom: 16px;}
 
 			&.is-invalid {
 				&::placeholder {
@@ -229,7 +213,8 @@
 		}
 
 		.user-choose{
-			margin-bottom: 20px;
+			@extend %width;
+			margin-bottom: 6%;
 			.lang{
 				.change-lang{
 					color: $bgMain;
@@ -239,6 +224,7 @@
 		}
 
 		.join {
+			@extend %width;
 			.next-block{@extend %mainBtnNextPage;}
 		}
 	}

@@ -121,7 +121,7 @@
 	.user-container{
 		@extend %mainWrapper;
 		justify-content: flex-start;
-		max-width: 425px;
+		max-width: inherit;
 		
 		.users-photos{
 			display: flex;
@@ -213,6 +213,10 @@
 					@media screen and (min-width: 370px){width: 105px;}
 					@media screen and (min-width: 390px){width: 110px;}
 					@media screen and (min-width: 410px){width: 120px;}
+					@media screen and (min-width: 460px){width: 130px;}
+					@media screen and (min-width: 490px){width: 140px;}
+					@media screen and (min-width: 510px){width: 145px;}
+					@media screen and (min-width: 535px){width: 155px;}
 				}
 			}
 
@@ -230,7 +234,9 @@
 					border-radius: 10px;
 					display: flex;
 					align-items: center;
-					box-shadow: 0px 1px 2px 0px rgba(187, 187, 187, 0.72);
+					-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+					-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					font-size: 12px;
 					width: 90%;
 					position: absolute;

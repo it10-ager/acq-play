@@ -127,19 +127,12 @@
 		data() {
 			return {
 				activeBlock: 1,
-				makeMain: 'Сделать главным',
-				deletePhoto: 'Удалить',
 			}
 		},
 		methods: {
 			activeDot(tab) {
 				this.activeBlock = tab;
 			},
-
-			selectForMain(){
-				this.makeMain = 'Главная';
-				document.querySelector('.main').style.color = '#3cb371';
-			}
 		},
 	};
 </script>
@@ -149,11 +142,8 @@
 	@import "../assets/vars";
 
 	.main-slider{
-		margin-bottom: 80px;
 		position: relative;
-		/* display: flex;
-		justify-content: space-between;
-		align-items: flex-end; */
+		max-width: inherit;
 
 		.slides{
 			width: 100%;
@@ -186,11 +176,13 @@
 
 				.user-info{
 					background: #fff;
-					border: 1px solid $bgMain;
+					border: 1px solid rgb(83, 184, 128);
 					border-radius: 10px;
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+					-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					font-size: 14px;
 					width: 85%;

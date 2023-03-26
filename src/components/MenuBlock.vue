@@ -64,8 +64,16 @@
 		bottom: 0;
 		right: 0;
 		left: 0;
-		z-index: 10;
-		background: $bgMain;
+		z-index: 100;
+		background-image: -moz-linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+  		background-image: -webkit-linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+ 		background-image: -ms-linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+ 		background-image: linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+		border-style: solid;
+		border-width: 1px;
+		border-color: rgb(204, 204, 204);
+		border-bottom: 0;
+		box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
 		display: flex;
 		align-items: center;
 		margin: 0 auto;

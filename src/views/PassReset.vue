@@ -22,7 +22,7 @@
 
 		<!--Main block to next page-->
 		<b-row class="join d-flex justify-content-center my-2">
-			<b-col>
+			<b-col class="p-0">
 				<div class="next-block" @click="checkEmailValidity()">
 					<span class="w-100 text-center">Выслать новый пароль</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
@@ -96,8 +96,8 @@
 
 	.search-love {
 		@extend %mainWrapper;
-		font-size: 16px;
-		.title {@extend %titleFont;}
+		max-width: inherit;
+		@media screen and (max-width: 415px){justify-content: center;}
 
 		.input-email {
 			border: 0;
@@ -106,7 +106,8 @@
 			border-radius: 50px;
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: center;
-			margin-bottom: 198px;
+			margin: 0 auto 50.2%;
+			@extend %width;
 
 			&.is-invalid {
 				&::placeholder {color: rgb(255, 174, 0);}
@@ -119,7 +120,8 @@
 		}
 
 		.user-choose{
-			margin-bottom: 20px;
+			@extend %width;
+			margin-bottom: 6%;
 			.lang{
 				.change-lang{
 					color: $bgMain;
@@ -129,19 +131,9 @@
 		}
 
 		.join {
+			@extend %width;
 			.next-block{
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				background: $bgMain;
-				color: $fontColor;
-				border-radius: 50px;
-				padding: 15px 30px;
-				cursor: pointer;
-				transition: background 0.2s;
-
-				>img {width: 8px;}
-				&:hover {background: #339860;}
+				@extend %mainBtnNextPage;
 			}
 		}
 	}

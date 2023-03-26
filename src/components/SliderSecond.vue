@@ -2,7 +2,7 @@
 	<div class="main-slider">
 		<div class="slides">
 			<!------1------>
-			<div class="slide" :class="{ active: activeBlock === 1 }">
+			<div class="slide no-photo" :class="{ active: activeBlock === 1 }">
 				<!--Title for page-->
 				<div class="text-center title px-3">Загрузите 1 фото!</div>
 				<div class="img-slide">
@@ -38,10 +38,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">
-						{{ makeMain }}
-					</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[0].makeMain === 'Главная' }" @click="selectForMain(1)">{{ blocks[0].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[0].makeMain === 'Главная' }">{{ blocks[0].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -62,8 +60,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[1].makeMain === 'Главная' }" @click="selectForMain(2)">{{ blocks[1].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[1].makeMain === 'Главная' }">{{ blocks[1].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -84,8 +82,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[2].makeMain === 'Главная' }" @click="selectForMain(3)">{{ blocks[2].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[2].makeMain === 'Главная' }">{{ blocks[2].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -106,8 +104,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[3].makeMain === 'Главная' }" @click="selectForMain(4)">{{ blocks[3].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[3].makeMain === 'Главная' }">{{ blocks[3].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -128,8 +126,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[4].makeMain === 'Главная' }" @click="selectForMain(5)">{{ blocks[4].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[4].makeMain === 'Главная' }">{{ blocks[4].deletePhoto }}</span>
 				</div>
 			</div>
 		</div>
@@ -151,8 +149,13 @@
 		data() {
 			return {
 				activeBlock: 1,
-				makeMain: 'Сделать главным',
-				deletePhoto: 'Удалить',
+				blocks: [
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' }
+				],
 			}
 		},
 		methods: {
@@ -160,9 +163,14 @@
 				this.activeBlock = tab;
 			},
 
-			selectForMain(){
-				this.makeMain = 'Главная';
-				document.querySelector('.main').style.color = '#3cb371';
+			selectForMain(blockIndex) {
+				this.blocks[blockIndex - 1].makeMain = 'Главная';
+
+				for (let i = 0; i < this.blocks.length; i++) {
+					if (i !== blockIndex - 1) {
+						this.blocks[i].makeMain = 'Сделать главным';
+					}
+				}
 			}
 		},
 	};
@@ -173,14 +181,14 @@
 	@import "../assets/vars";
 
 	.main-slider{
-		margin-bottom: 80px;
+		margin-bottom: 5%;
 		position: relative;
-		/* display: flex;
-		justify-content: space-between;
-		align-items: flex-end; */
+		max-width: inherit;
 
 		.slides{
 			width: 100%;
+
+			.no-photo{margin-bottom: 14px;}
 			.slide{
 				opacity: 0;
 				transition: opacity 0.5s ease;
@@ -210,16 +218,18 @@
 
 				.user-info{
 					background: #fff;
-					border: 1px solid $bgMain;
+					border: 1px solid rgb(83, 184, 128);
 					border-radius: 10px;
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+					-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					font-size: 14px;
-					width: 280px;
+					width: 85%;
 					position: absolute;
-					bottom: 45px;
+					bottom: 55px;
 					left: 0;
 					right: 0;
 					margin: auto;
@@ -245,7 +255,7 @@
 					}
 					
 					@media screen and (min-width: 410px){
-						width: 350px;
+						
 						padding: 10px 20px;
 						.info-txt{
 						margin-right: 30px;
@@ -286,7 +296,8 @@
 				}
 
 				.user-settings{
-					padding: 0 30px;
+					width: 90%;
+					margin: 0 auto;
 					display: flex;
 					justify-content: space-between;
 					font-size: 14px;
@@ -294,7 +305,10 @@
 
 					>span{
 						cursor: pointer;
-						&.main:hover{color: $bgMain;}
+						&.main{
+							&.green{color: #339860;}
+						}
+						&.main:hover{color: #339860;}
 						&.delete{
 							&.disabled {
  								color: gray;

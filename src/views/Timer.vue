@@ -42,21 +42,27 @@
 		padding: 0;
 		font-size: 18px;
 		position: relative;
-		max-width: 425px;
+		max-width: inherit;
 
-		.slider-third{margin-bottom: 20px;}
+		.slider-third{margin-bottom: 2%;}
 
 		.attemps{
-			padding: 0 20px;
+			width: 90%;
+			margin: 0 auto;
 			font-size: 14px;
 			@media screen and (min-width: 410px){font-size: 16px;}
 		}
 
 		.timer{
-			margin: 0 auto 100px;
-			background: #fff;
+			margin: 0 auto 18%;
+			-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+			-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+			box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+			background-image: -moz-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+			background-image: -webkit-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+			background-image: -ms-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+			background-image: linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
 			border-radius: 10px;
-			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			padding: 15px 0 5px;
 			width: 90%;
 			line-height: 30px;

@@ -4,8 +4,8 @@
 		<div class="text-center title">Выберите язык</div>
 		
 		<!--Blocks for choosing language-->
-		<b-row class="lang-content d-flex justify-content-center flex-column mt-4">
-			<b-col class="col-width my-2" v-for="(lang, index) in languages" :key="index">
+		<b-row class="lang-content d-flex justify-content-center align-items-center flex-column">
+			<b-col class="col-width" v-for="(lang, index) in languages" :key="index">
 				<div :class="['lang-block', lang.active ? 'active' : '']" @click="toggleLanguage(index)">
 					{{ lang.text }}
 				</div>
@@ -13,8 +13,8 @@
 		</b-row>
 
 		<!--Main block to next page-->
-		<b-row class="lang-content d-flex justify-content-center my-2" v-if="hasActiveLanguage">
-			<b-col>
+		<b-row class="lang-content next d-flex justify-content-center" v-if="hasActiveLanguage">
+			<b-col class="col-width">
 				<div class="next-block" @click="goToRegistration">
 					<span class="w-100 text-center">Далее</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
@@ -65,22 +65,58 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		max-width: inherit;
 		.title {@extend %titleFont;}
 
 		.lang-content {
-			margin: 0 0 80px;
-			
-			.lang-block.active {
-				color: $fontColor;
-				background: $bgMain;
-				transition: background 0.2s;
-				&:hover {background: $bgMain;}
+			margin: 0 0 40%;
+			&.next{
+				margin-bottom: 0;
+				@extend %width;
 			}
 
+			.col-width{
+				margin: 0 0 3%;
+				padding: 0;
+				@extend %width;
+			}
+			
 			.lang-block{
+				-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				border: 1px solid transparent;
+
 				&:hover {
+					border-style: solid;
+					border-width: 1px;
+					border-color: rgb(204, 204, 204);
 					color: $fontColor;
-					background: #339860;
+					background-image: -moz-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: -webkit-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: -ms-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+				}
+			}
+
+			.lang-block.active {
+				color: $fontColor;
+				background-image: -moz-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				background-image: -webkit-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				background-image: -ms-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				background-image: linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				border-style: solid;
+				border-width: 1px;
+				border-color: rgb(204, 204, 204);
+				-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+			
+				&:hover {
+					background-image: -moz-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					background-image: -webkit-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					background-image: -ms-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					background-image: linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
 				}
 			}
 
@@ -94,18 +130,32 @@
 				border-radius: 50px;
 				padding: 15px 30px;
 				cursor: pointer;
-				transition: background 0.2s;
 			}
 
 			.next-block {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				background: $bgMain;
 				color: $fontColor;
+				background-image: -moz-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				background-image: -webkit-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				background-image: -ms-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				background-image: linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+				border-style: solid;
+				border-width: 1px;
+				border-color: rgb(204, 204, 204);
+				-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
 				
 				>img {width: 8px;}
-				&:hover {background: #339860;}
+				&:hover {
+					color: $fontColor;
+					background-image: -moz-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: -webkit-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: -ms-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					background-image: linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+				}
 			}
 		}
 	}

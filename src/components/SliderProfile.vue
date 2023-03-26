@@ -179,6 +179,7 @@
 	.main-slider{
 		margin-bottom: 10px;
 		position: relative;
+		max-width: inherit;
 		/* display: flex;
 		justify-content: space-between;
 		align-items: flex-end; */
@@ -214,16 +215,18 @@
 
 				.user-info{
 					background: #fff;
-					border: 1px solid $bgMain;
+					border: 1px solid rgb(83, 184, 128);
 					border-radius: 10px;
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+					-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 					font-size: 14px;
-					width: 280px;
+					width: 85%;
 					position: absolute;
-					bottom: 45px;
+					bottom: 15px;
 					left: 0;
 					right: 0;
 					margin: auto;
@@ -249,7 +252,7 @@
 					}
 					
 					@media screen and (min-width: 410px){
-						width: 350px;
+						
 						padding: 10px 20px;
 						.info-txt{
 						margin-right: 30px;

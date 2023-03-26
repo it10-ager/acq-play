@@ -2,10 +2,10 @@
 	<div class="user-container">
 		<SliderSecond />
 	
-		<div class="px-3 mb-4">
+		<div class="buttons">
 			<!--Download Block-->
-			<b-row class="join d-flex justify-content-center my-2">
-				<b-col>
+			<b-row class="join" @click="activeNextBtn()">
+				<b-col class="p-0">
 					<div class="next-block photo-download">
 						<span class="w-100 text-center">Загрузить фото</span>
 						<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
@@ -14,8 +14,8 @@
 			</b-row>
 
 			<!--Main block to next page-->
-			<b-row class="join d-flex justify-content-center my-2" @click="goToGuessImages()">
-				<b-col>
+			<b-row class="join next-page" @click="goToGuessImages()">
+				<b-col class="p-0">
 					<div class="next-block">
 						<span class="w-100 text-center">Далее</span>
 						<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
@@ -43,6 +43,11 @@
 		},
 
 		methods: {
+			activeNextBtn(){
+				var next = document.querySelector('.buttons .next-page');
+				next.style.display = 'block';
+			},
+
 			goToGuessImages(){this.$router.push('/game');}
 		},
 	};
@@ -56,12 +61,16 @@
 		@extend %mainWrapper;
 		justify-content: flex-start;
 		padding: 0;
-		font-size: 18px;
 		position: relative;
+		max-width: inherit;
 		
-		.join {
-			.photo-download{margin-bottom: 10px;}
-			.next-block {@extend %mainBtnNextPage;}
+		.buttons{
+			.next-page{display: none;}
+			.join {
+				@extend %widthNoPadding;
+				.photo-download{margin-bottom: 3%;}
+				.next-block {@extend %mainBtnNextPage;}
+			}
 		}
 	}
 </style>

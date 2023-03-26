@@ -1,6 +1,5 @@
 <template>
 	<div id="app">
-		<!-- <div class="bg-image"></div> -->
 		<router-view />
 	</div>
 </template>
@@ -27,28 +26,17 @@
 
 	body {
 		font-family: 'Myriad Pro', sans-serif!important;
-		background-image: url(./assets/img/background/Fon-3.png);
+		background-image: url(./assets/img/background/photo_fon.jpg);
+		background-repeat: repeat;
 		background-size: cover;
-		background-repeat: no-repeat;
 	}
 
 	#app {
 		margin: auto!important;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		max-width: 425px;
+		max-width: 540px;
 		position: relative;
 		min-height: 100%;
-
-		/* .bg-image {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-image: url(./assets/img/background/Fon-3.png);
-			background-size: cover;
-			z-index: -1;
-		} */
 	}
 </style>

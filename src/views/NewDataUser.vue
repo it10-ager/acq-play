@@ -4,8 +4,15 @@
 		<div class="text-center title">Найди любовь играя!</div>
 
 		<!--Name-->
-		<input class="input-text" type="text" maxlength="15" :placeholder="namePlaceholder" v-model="name"
-		:class="{ 'is-invalid': nameInvalid, 'is-valid': nameValid }" />
+		<div class="check-input name-input">
+			<input class="input-text" type="text" maxlength="15" :placeholder="namePlaceholder" v-model="name" @input="checkValueLength()"
+			:class="{ 'is-invalid': nameInvalid, 'is-valid': nameValid }" />
+
+			<div class="arrow name-arrow">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
 		
 		<!--Gender-->
 		<div class="block-text gender" @click="showGender = !showGender">
@@ -27,17 +34,38 @@
   		</div>
 
 		<!--Date birthday-->
-		<input class="input-text date" type="text" :placeholder="birthPlaceholder" v-model.lazy="birth"
-		:class="{ 'is-invalid': birthInvalid, 'is-valid': birthValid }" @input="formatDateInput"/>
+		<div class="check-input birth-input">
+			<input class="input-text date" type="text" :placeholder="birthPlaceholder" v-model.lazy="birth"
+			:class="{ 'is-invalid': birthInvalid, 'is-valid': birthValid }" @input="formatDateInput" @keypress="onlyNumberInput"/>
 
+			<div class="arrow birth-arrow">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		
 		<!--City-->
-		<input class="input-text" maxlength="15" type="text" :placeholder="cityValue" v-model="city"
-		:class="{ 'is-invalid': cityInvalid, 'is-valid': cityValid }" />
+		<div class="check-input city-input">
+			<input class="input-text" maxlength="15" type="text" :placeholder="cityValue" v-model="city" @input="checkValueLength()"
+			:class="{ 'is-invalid': cityInvalid, 'is-valid': cityValid }" />
+
+			<div class="arrow city-arrow">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
 
 		<!--Company-->
-		<input class="input-text" maxlength="15" type="text" :placeholder="companyPlaceholder" v-model="company"
-		:class="{ 'is-invalid': companyInvalid, 'is-valid': companyValid }" />
+		<div class="check-input company-input">
+			<input class="input-text" maxlength="15" type="text" :placeholder="companyPlaceholder" v-model="company" @input="checkValueLength()"
+			:class="{ 'is-invalid': companyInvalid, 'is-valid': companyValid }" />
 
+			<div class="arrow company-arrow">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		
 		<!--Busy-->
 		<div class="block-text busy" @click="showBusy = !showBusy">
 			<div class="placeholder-txt">
@@ -75,13 +103,20 @@
   		</div>
 
 		<!---Email--->
-		<input class="input-text email" type="email" :placeholder="emailPlaceholder" v-model="email"
-		:class="{ 'is-invalid': emailInvalid, 'is-valid': emailValid }" />
+		<div class="check-input email-input">
+			<input class="input-text email" type="email" :placeholder="emailPlaceholder" v-model="email" @input="checkValueLength()"
+			:class="{ 'is-invalid': emailInvalid, 'is-valid': emailValid }" />
+
+			<div class="arrow email-arrow">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
 
 		<!--Main block to next page-->
 		<b-row class="join d-flex justify-content-center my-2">
-			<b-col>
-				<div class="next-block" @click="checkFormValidity()">
+			<b-col class="p-0">
+				<div class="next-block" v-if="isFormValid" @click="checkFormValidity()">
 					<span class="w-100 text-center">Далее</span>
 					<img src="../assets/img/elements/arrows-11.png" alt="arrow-right">
 				</div>
@@ -104,6 +139,7 @@
 
 				gender: 'Выберите пол',
 				genderOptions: ['Мужской', 'Женский'],
+				genderOption: null,
      			showGender: false,
 				genderInvalid: false,
 				genderValid: false,
@@ -135,25 +171,35 @@
 				emailInvalid: false,
 				emailValid: false,
 				emailPlaceholder: 'Введите e-mail (для отправки пароля)',
+
+				isEmailValid: false,
+				isValid: false,
     		}
 		},
 
+		computed: {
+    		isFormValid() {
+     			return this.name && this.birth && this.city && this.genderOption !== null;
+   		 	},
+  		},
+
 		methods: {
 			selectGender(genderOption) {
+				this.genderOption = genderOption;
 				if (genderOption === this.gender) {
 					this.showGender = false;
 				} else {
 					this.gender = genderOption;
 					this.showGender = true;
-
-					var arrow = document.querySelectorAll('.gender .arrow > span');
-					arrow.forEach(function(arrow) {
-						arrow.style.backgroundColor = '#3cb371';
-					});
-
-					var newColor = document.querySelector('.gender .placeholder-txt > span')
-					newColor.style.color = '#000';
 				}
+				
+				var arrow = document.querySelectorAll('.gender .arrow > span');
+				arrow.forEach(function(arrow) {
+					arrow.style.backgroundColor = '#3cb371';
+				});
+
+				var newColor = document.querySelector('.gender .placeholder-txt > span')
+				newColor.style.color = '#000';
 			},
 
 			selectBusy(busyOption) {
@@ -190,12 +236,20 @@
 				newColor.style.color = '#000';
 			},
 
-			formatDateInput(event) {
-				let input = event.target.value.replace(/\D/g, '').substring(0, 8);
-				let day = input.substring(0, 2);
-				let month = input.substring(2, 4);
-				let year = input.substring(4, 8);
+			onlyNumberInput(event) {
+   				if (event.keyCode < 48 || event.keyCode > 57) {
+      				event.preventDefault();
+    			}
+  			},
 
+			formatDateInput(event) {
+				var input = event.target.value.replace(/\D/g, '').substring(0, 8);
+				var day = input.substring(0, 2);
+				var month = input.substring(2, 4);
+				var year = input.substring(4, 8);
+				var birthCheck = document.querySelector('.birth-input > .input-text');
+				var birthArrow = document.querySelectorAll('.birth-input .birth-arrow > span');
+				
 				if (input.length > 4) {
 					event.target.value = `${day}.${month}.${year}`;
 				} else if (input.length > 2) {
@@ -204,11 +258,91 @@
 					event.target.value = `${day}`;
 				}
 				this.birth = event.target.value;
+
+				if(birthCheck.value.length == 0){
+					birthArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#b6b6b6';
+   		 			});
+					
+				} else if(birthCheck.value.length > 0 && birthCheck.value.length < 10){
+					birthArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#ff7200';
+   		 			});
+				} else {
+					birthArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#3cb371';
+   		 			});
+				}
+			},
+
+			checkValueLength(){
+				var nameCheck = document.querySelector('.name-input > .input-text');
+				var nameArrow = document.querySelectorAll('.name-input .name-arrow > span');
+				var cityCheck = document.querySelector('.city-input > .input-text');
+				var cityArrow = document.querySelectorAll('.city-input .city-arrow > span');
+				var companyCheck = document.querySelector('.company-input > .input-text');
+				var companyArrow = document.querySelectorAll('.company-input .company-arrow > span');
+				var emailCheck = document.querySelector('.email-input > .input-text');
+				var emailArrow = document.querySelectorAll('.email-input .email-arrow > span');
+				var emailInput = /^\S+@\S+\.\S+$/;
+				
+				if(nameCheck.value.length == 0){
+					nameArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#b6b6b6';
+   		 			});
+				} else if(nameCheck.value.length > 0 && nameCheck.value.length <= 2){
+					nameArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#ff7200';
+   		 			});
+				} else if(nameCheck.value.length > 2){
+					nameArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#3cb371';
+   		 			});
+				}
+
+				if(cityCheck.value.length == 0){
+					cityArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#b6b6b6';
+   		 			});
+				} else {
+					cityArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#3cb371';
+   		 			});
+				}
+
+				if(companyCheck.value.length == 0){
+					companyArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#b6b6b6';
+   		 			});
+				} else if(companyCheck.value.length > 0 && companyCheck.value.length <= 2){
+					companyArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#ff7200';
+   		 			});
+				} else if(companyCheck.value.length > 2){
+					companyArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#3cb371';
+   		 			});
+				}
+
+				if (emailCheck.value.length == 0) {
+					emailArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#b6b6b6';
+   		 			});
+				} else if(!emailInput.test(this.email)) {
+					emailArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#ff7200';
+   		 			});
+				} else {
+					emailArrow.forEach(function(arrow) {
+  						arrow.style.backgroundColor = '#3cb371';
+   		 			});
+				}
 			},
 
 			checkFormValidity() {
-				/* var emailCheck = /^\S+@\S+\.\S+$/; */
-				var nameCheck = 2;
+				var nameLength = 2;
+				var companyLength = 2;
+				var lengthBirth = 10;
 
 				/* name check */
 				if (!this.name.trim()) {
@@ -216,22 +350,24 @@
 					this.nameValid = false;
 					this.name = '';
 					this.namePlaceholder = 'Поле имя пустое!';
-				} else if (this.name.length < nameCheck) { 
+				} else if (this.name.length < nameLength) { 
 					this.nameInvalid = true;
 					this.nameValid = false;
 					this.name = '';
-					this.namePlaceholder = 'Имя должно сержать от 2 букв';
+					this.namePlaceholder = 'Имя должно содержать от 2 букв';
 				} else {
 					this.nameInvalid = false;
 					this.nameValid = true;
 					this.name = '';
 					this.namePlaceholder = 'Введите имя';
 				}
-
+				
+				/* city check */
 				if (!this.city.trim()) {
 					this.cityInvalid = true;
 					this.cityValid = false;
 					this.city = '';
+					this.cityPlaceholder = 'Поле город пустое!';
 				} else {
 					this.cityInvalid = false;
 					this.cityValid = true;
@@ -239,10 +375,17 @@
 					this.cityPlaceholder = 'Введите город';
 				}
 
+				/* birth check */
 				if (!this.birth.trim()) {
 					this.birthInvalid = true;
 					this.birthValid = false;
 					this.birth = '';
+					this.birthPlaceholder = 'Поле дата рождения пустое!';
+				} else if (this.birth.length < lengthBirth) { 
+					this.birthInvalid = true;
+					this.birthValid = false;
+					this.birth = '';
+					this.birthPlaceholder = 'Не верно введена дата рождения';
 				} else {
 					this.birthInvalid = false;
 					this.birthValid = true;
@@ -250,23 +393,37 @@
 					this.birthPlaceholder = 'Введите дату рождения (цифры)';
 				}
 
+				/* company check */
+				if (this.company.length < companyLength) { 
+					this.companyInvalid = true;
+					this.companyValid = false;
+					this.company = '';
+					this.companyPlaceholder = 'Поле должно содержать от 2 букв';
+				}
+
 				/* email check */
-				/* if (!emailCheck.test(this.email)) {
+				var emailCheck = /^\S+@\S+\.\S+$/;
+				if (!this.email.trim()) {
+					this.emailInvalid = true;
+					this.emailValid = false;
+					this.email = '';
+					this.emailPlaceholder = 'Поле e-mail пустое!';
+				} else if(!emailCheck.test(this.email)) {
 					this.emailInvalid = true;
 					this.emailValid = false;
 					this.email = '';
 					this.emailPlaceholder = 'E-mail содержит ошибку';
-				} else{
+				} else {
 					this.emailInvalid = false;
 					this.emailValid = true;
 					this.email = '';
-					this.emailPlaceholder = 'Введите e-mail (для отправки пароля)';
-				} */
+					this.emailPlaceholder = 'Введите e-mail для регистрации';
+				}
 
-				/* go to next page if all fields full and right*/
-				if(this.nameValid && this.birthValid && this.cityValid){
-       				this.$router.push('/choose-images');
-    			}
+				if (this.nameValid && this.birthValid ) {this.isValid = true;}
+				else {this.isValid = false;}
+
+				if(this.isValid == true){this.$router.push('choose-images');}
 			},
 		},
 	}
@@ -279,27 +436,32 @@
 	.new-data {
 		@extend %mainWrapper;
 		font-size: 18px;
-
+		max-width: inherit;
+		@media screen and (max-width: 415px){justify-content: center;}
+		
 		.title {
 			@extend %titleFont;
-			margin: 7% 0 30px;
+			margin: 5% 0 3%;
 		}
-
+	
 		.input-text, .block-text {
+			@extend %width;
 			border: 0;
 			outline: none;
 			padding: 15px 30px;
 			border-radius: 50px;
+			-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
+			-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			text-align: left;
-			margin-bottom: 12px;
+			margin-bottom: 2%;
 
 			&.date{
 				&::placeholder{color: #b6b6b6}
 			}
 
 			&.input-text{
-				&.email{margin-bottom: 45px;}
+				&.email{margin-bottom: 4%;}
 			}
 
 			&.is-invalid {
@@ -307,6 +469,35 @@
 			}
 
 			&::placeholder {color: $placeholderColor;}
+		}
+
+		.check-input{
+			@extend %width;
+			position: relative;
+
+			.input-text{width: 100%;}
+			.arrow {
+				display: flex;
+				width: 10px;
+				justify-content: center;
+				z-index: 12;
+				position: absolute;
+				top: 22px;
+				right: 30px;
+
+				>span {
+					height: 10px;
+					width: 2px;
+					background-color: $placeholderColor;
+
+					&:first-of-type {
+						transform: rotate(-45deg);
+						margin-right: 4px;
+					}
+
+					&:last-of-type {transform: rotate(45deg);}
+				}
+			}
 		}
 
 		.block-text {
@@ -381,7 +572,10 @@
 		}
 
 		.join {
-			.next-block {@extend %mainBtnNextPage;}
+			@extend %width;
+			.next-block {
+				@extend %mainBtnNextPage;
+			}
 		}
 	}
 </style>

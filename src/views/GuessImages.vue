@@ -10,7 +10,7 @@
 		<div class="category-container px-3">
 			<b-row class="m-0">
 				<b-col class="col-block">
-					<div class="img-block" :class="{ active: block1.isActive }" @click="toggleBlock(block1)">
+					<div class="img-block choose-block" :class="{ active: block1.isActive }" @click="toggleBlock(block1)">
 						<img src="../assets/img/emoji/scream.png" alt="scream">
 					</div>
 				</b-col>
@@ -80,11 +80,10 @@
 		@extend %mainWrapper;
 		justify-content: flex-start;
 		padding: 0;
-		font-size: 18px;
 		position: relative;
-		max-width: 425px;
+		max-width: inherit;
 
-		.slider-third{margin-bottom: 20px;}
+		.slider-third{margin-bottom: 2%;}
 
 		.attemps{
 			font-size: 12px;
@@ -97,7 +96,7 @@
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: center;
-			margin-bottom: 100px;
+			margin-bottom: 18%;
 
 			.col-block{
 				padding: 0!important;
@@ -105,25 +104,51 @@
 			}
 
 			.img-block {
-				background-color: #f1f1f1;
 				border-radius: 10px;
-				height: 70px;
+				height: 50px;
 				width: 100%;
 				cursor: pointer;
 				display: flex;
 				align-items: center;
+				
+				&.choose-block{
+					-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+					-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+					box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+					background-image: -moz-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+					background-image: -webkit-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+					background-image: -ms-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+					background-image: linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
 
-				@media screen and (max-width: 400px){
-					&{height: 60px;}
+					&:hover{
+						background-image: -moz-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+						background-image: -webkit-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+						background-image: -ms-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+						background-image: linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+					
+					}
+					
+					&.active {
+						background-image: -moz-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+						background-image: -webkit-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+						background-image: -ms-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+						background-image: linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+					}
 				}
 
-				@media screen and (max-width: 325px){
-					&{height: 50px;}
-				}
+				@media screen and (min-width: 325px){height: 60px;}
+				@media screen and (min-width: 400px){height: 70px;}
+				@media screen and (min-width: 500px){height: 85px;}
 
 				>img{width: inherit;}
-				&.active {background-color: #339860;}
-				&.checked{background-color: #6dc695;}
+
+				&.checked{
+					background-color: #6dc695;
+					-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+					-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+					box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+				}
+
 				&.loss{
 					justify-content: center;
 					background-color: $errorColor;
