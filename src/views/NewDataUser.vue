@@ -480,7 +480,6 @@
 				display: flex;
 				width: 10px;
 				justify-content: center;
-				z-index: 12;
 				position: absolute;
 				top: 22px;
 				right: 30px;
