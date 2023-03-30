@@ -394,7 +394,7 @@
 				}
 
 				/* company check */
-				if (this.company.length < companyLength) { 
+				if (this.company.length < companyLength) {
 					this.companyInvalid = true;
 					this.companyValid = false;
 					this.company = '';

@@ -170,17 +170,9 @@
 				display: flex;
 				align-items: center;
 
-				@media screen and (min-width: 335px){
-					height: 100px;
-				}
-
-				@media screen and (min-width: 400px){
-					height: 120px;
-				}
-
-				@media screen and (min-width: 450px){
-					height: 140px;
-				}
+				@media screen and (min-width: 335px){height: 100px;}
+				@media screen and (min-width: 400px){height: 120px;}
+				@media screen and (min-width: 450px){height: 140px;}
 
 				>img{width: inherit;}
 				&:hover{

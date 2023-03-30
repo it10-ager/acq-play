@@ -148,7 +148,7 @@
 		max-width: inherit;
 		@media screen and (max-width: 415px){justify-content: center;}
 
-		.registration {
+		.registration { 
 			display: flex;
 			@extend %width;
 			margin: 0 auto 18.5%;
