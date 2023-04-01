@@ -437,7 +437,6 @@
 		@extend %mainWrapper;
 		font-size: 18px;
 		max-width: inherit;
-		@media screen and (max-width: 415px){justify-content: center;}
 		
 		.title {
 			@extend %titleFont;

@@ -130,7 +130,6 @@
 	.search-love {
 		@extend %mainWrapper;
 		max-width: inherit;
-		@media screen and (max-width: 415px){justify-content: center;}
 
 		.registration {
 			display: flex;

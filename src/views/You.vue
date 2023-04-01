@@ -217,7 +217,6 @@
 			-webkit-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			-moz-box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
 			box-shadow: 0px 1px 2px 0px rgb(187 187 187 / 72%);
-
 			@media screen and (min-width: 410px){font-size: 16px;}
 
 			span {
@@ -329,7 +328,13 @@
 					}
 
 					.img-block {
-						background-color: #f1f1f1;
+						-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+						-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+						box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+						background-image: -moz-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+						background-image: -webkit-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+						background-image: -ms-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+						background-image: linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
 						border-radius: 10px;
 						height: 40px;
 						width: 40px;
@@ -345,12 +350,12 @@
 						}
 
 						&.question{
-						justify-content: center;
-						>img{
-							width: 30px;
-							height: 30px;
+							justify-content: center;
+							>img{
+								width: 30px;
+								height: 30px;
+							}
 						}
-					}
 					}
 				}
 			}

@@ -79,7 +79,6 @@
 		@extend %mainWrapper;
 		justify-content: flex-start;
 		padding: 0;
-		font-size: 18px;
 		position: relative;
 		max-width: inherit;
 

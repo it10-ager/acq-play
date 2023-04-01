@@ -12,6 +12,7 @@
 		<!---Email input--->
 		<input class="input-email" type="email" :placeholder="emailPlaceholder" v-model="email"
 		:class="{ 'is-invalid': emailInvalid, 'is-valid': emailValid}"  />
+		
 		<!---Password input--->
 		<input class="input-pass" type="password" :placeholder="passPlaceholder" v-model="pass"
 		:class="{ 'is-invalid': passInvalid, 'is-valid': passValid}"  />
@@ -146,7 +147,6 @@
 	.search-love {
 		@extend %mainWrapper;
 		max-width: inherit;
-		@media screen and (max-width: 415px){justify-content: center;}
 
 		.registration { 
 			display: flex;

@@ -85,21 +85,13 @@
 		@extend %mainWrapper;
 		justify-content: flex-start;
 		padding: 0;
-		font-size: 18px;
 		position: relative;
 		max-width: inherit;
 
 		.navigation{
-			padding: 30px 20px 0;
+			padding: 5% 20px 0;
 			margin-bottom: 15px;
-			/* position: fixed;
-			top: 0;
-			right: 0;
-			left: 0;
-			max-width: inherit;
-			margin: 0 auto;
-			z-index: 10; */
-
+	
 			.back-page{
 				font-size: 12px;
 				padding-bottom: 10px;

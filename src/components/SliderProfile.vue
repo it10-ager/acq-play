@@ -18,10 +18,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">
-						{{ makeMain }}
-					</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[0].makeMain === 'Главная' }" @click="selectForMain(1)">{{ blocks[0].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[0].makeMain === 'Главная' }">{{ blocks[0].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -42,10 +40,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">
-						{{ makeMain }}
-					</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[1].makeMain === 'Главная' }" @click="selectForMain(2)">{{ blocks[1].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[1].makeMain === 'Главная' }">{{ blocks[1].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -66,8 +62,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[2].makeMain === 'Главная' }" @click="selectForMain(3)">{{ blocks[2].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[2].makeMain === 'Главная' }">{{ blocks[2].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -88,8 +84,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[3].makeMain === 'Главная' }" @click="selectForMain(4)">{{ blocks[3].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[3].makeMain === 'Главная' }">{{ blocks[3].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -110,8 +106,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[4].makeMain === 'Главная' }" @click="selectForMain(5)">{{ blocks[4].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[4].makeMain === 'Главная' }">{{ blocks[4].deletePhoto }}</span>
 				</div>
 			</div>
 
@@ -132,8 +128,8 @@
 					</div>
 				</div>
 				<div class="user-settings mt-2">
-					<span class="main" @click="selectForMain()">{{ makeMain }}</span>
-					<span class="delete" :class="{ 'disabled': makeMain === 'Главная' }">{{ deletePhoto }}</span>
+					<span class="main" :class="{ 'green': blocks[5].makeMain === 'Главная' }" @click="selectForMain(6)">{{ blocks[5].makeMain }}</span>
+					<span class="delete" :class="{ 'disabled': blocks[5].makeMain === 'Главная' }">{{ blocks[5].deletePhoto }}</span>
 				</div>
 			</div>
 		</div>
@@ -155,8 +151,14 @@
 		data() {
 			return {
 				activeBlock: 1,
-				makeMain: 'Сделать главным',
-				deletePhoto: 'Удалить',
+				blocks: [
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' },
+					{ makeMain: 'Сделать главным', deletePhoto: 'Удалить' }
+				],
 			}
 		},
 		methods: {
@@ -164,9 +166,14 @@
 				this.activeBlock = tab;
 			},
 
-			selectForMain(){
-				this.makeMain = 'Главная';
-				document.querySelector('.main').style.color = '#3cb371';
+			selectForMain(blockIndex) {
+				this.blocks[blockIndex - 1].makeMain = 'Главная';
+
+				for (let i = 0; i < this.blocks.length; i++) {
+					if (i !== blockIndex - 1) {
+						this.blocks[i].makeMain = 'Сделать главным';
+					}
+				}
 			}
 		},
 	};
@@ -177,12 +184,9 @@
 	@import "../assets/vars";
 
 	.main-slider{
-		margin-bottom: 10px;
+		margin-bottom: 5%;
 		position: relative;
 		max-width: inherit;
-		/* display: flex;
-		justify-content: space-between;
-		align-items: flex-end; */
 
 		.slides{
 			width: 100%;
@@ -226,7 +230,7 @@
 					font-size: 14px;
 					width: 85%;
 					position: absolute;
-					bottom: 15px;
+					bottom: 55px;
 					left: 0;
 					right: 0;
 					margin: auto;
@@ -293,15 +297,18 @@
 				}
 
 				.user-settings{
-					padding: 0 30px;
+					width: 85%;
+					margin: 0 auto;
 					display: flex;
 					justify-content: space-between;
-					font-size: 14px;
 					@media screen and (min-width: 410px){font-size: 16px;}
 
 					>span{
 						cursor: pointer;
-						&.main:hover{color: $bgMain;}
+						&.main{
+							&.green{color: #339860;}
+						}
+						&.main:hover{color: #339860;}
 						&.delete{
 							&.disabled {
  								color: gray;

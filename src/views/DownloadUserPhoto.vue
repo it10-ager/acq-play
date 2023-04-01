@@ -65,7 +65,10 @@
 		max-width: inherit;
 		
 		.buttons{
-			.next-page{display: none;}
+			.next-page{
+				display: none;
+				margin-bottom: 3%;
+			}
 			.join {
 				@extend %widthNoPadding;
 				.photo-download{margin-bottom: 3%;}

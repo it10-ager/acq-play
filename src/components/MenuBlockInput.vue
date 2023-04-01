@@ -98,7 +98,6 @@
 			flex-direction: column;
 			font-size: 16px;
 			color: #b6b6b6;
-			@media screen and (min-width: 410px){font-size: 18px;}
 
 			.field{
 				width: 100%;
@@ -139,9 +138,16 @@
 
 		.menu{
 			padding: 10px 10px 5px;
-			background: $bgMain;
+			background-image: -moz-linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+			background-image: -webkit-linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+			background-image: -ms-linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+			background-image: linear-gradient(-60deg, #3cb371 40%, rgb(255, 255, 255) 150%);
+			-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+			-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+			box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
 			display: flex;
 			width: 100%;
+
 			.menu-btn{
 				display: flex;
 				flex-direction: column;

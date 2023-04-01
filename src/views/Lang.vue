@@ -66,6 +66,7 @@
 		flex-direction: column;
 		min-height: 100vh;
 		max-width: inherit;
+		
 		.title {@extend %titleFont;}
 
 		.lang-content {

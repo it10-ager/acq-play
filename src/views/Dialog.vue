@@ -135,8 +135,6 @@
 				this.isActive = action;
 				this.$router.push('/favorite-dialog');
 			},
-
-			/* goToGame(){this.$router.push('/game');}, */
 		}
 	};
 </script>

@@ -42,8 +42,6 @@
 					</div>
 				</b-col>
 			</div>
-
-			
 		</div>
 
 		<MenuBlock/>
@@ -235,32 +233,44 @@
 
 				.col-block{
 					padding: 0!important;
-					/* &:not(:last-of-type){margin-right: 5px;} */
 					
 					.img-block {
-						background-color: #f1f1f1;
+						-webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+						-moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+						box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+						background-image: -moz-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+						background-image: -webkit-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+						background-image: -ms-linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
+						background-image: linear-gradient(-60deg, #f1f1f1 55%, rgb(255, 255, 255) 150%);
 						border-radius: 10px;
 						height: 65px;
 						width: 65px;
 						cursor: pointer;
 						display: flex;
 						align-items: center;
+
 						@media screen and (min-width: 410px){
 							height: 68px;
 							width: 68px;
 						}
-						&:hover{background: $bgMain;}
+
 						>img{width: inherit;}
-						&.active {background-color: #339860;}
+
+						&:hover{
+							background-image: -moz-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+							background-image: -webkit-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+							background-image: -ms-linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+							background-image: linear-gradient(-60deg, #3cb371 55%, rgb(255, 255, 255) 150%);
+						}
+					
+						&.active {
+							background-image: -moz-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+							background-image: -webkit-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+							background-image: -ms-linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+							background-image: linear-gradient(-60deg, #339860 55%, rgb(255, 255, 255) 150%);
+						}
 					}
 				}
-			}
-		}
-
-		.save {
-			.save-block {
-				@extend %mainBtnNextPage;
-				margin-bottom: 40px;
 			}
 		}
 	}
